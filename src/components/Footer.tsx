@@ -59,7 +59,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3>Calculators</h3>
+            <h3>
+              {isJapanese ? "計算ツール" : "Calculators"}
+            </h3>
 
             <div
               style={{
@@ -69,22 +71,28 @@ export default function Footer() {
                 gap: "12px",
               }}
             >
-              <Link href={p("/profit-calculator")}>Profit Calculator</Link>
+              <Link href={p("/profit-calculator")}>
+                {isJapanese ? "利益計算ツール" : "Profit Calculator"}
+              </Link>
 
               <Link href={p("/break-even-calculator")}>
-                Break-even Calculator
+                {isJapanese
+                  ? "損益分岐点計算ツール"
+                  : "Break-even Calculator"}
               </Link>
 
               <Link href={p("/pricing-calculator")}>
-                Pricing Calculator
+                {isJapanese ? "価格設定ツール" : "Pricing Calculator"}
               </Link>
 
               <Link href={p("/sales-target-calculator")}>
-                Sales Target Calculator
+                {isJapanese
+                  ? "売上目標計算ツール"
+                  : "Sales Target Calculator"}
               </Link>
 
               <Link href={p("/roi-calculator")}>
-                ROI Calculator
+                {isJapanese ? "ROI計算ツール" : "ROI Calculator"}
               </Link>
             </div>
           </div>
@@ -102,15 +110,27 @@ export default function Footer() {
                 gap: "12px",
               }}
             >
-              <Link href={p("/about")}>About</Link>
+              <Link href={p("/about")}>
+                {isJapanese ? "BizToolsについて" : "About"}
+              </Link>
 
-              <Link href={p("/contact")}>Contact</Link>
+              <Link href={p("/contact")}>
+                {isJapanese ? "お問い合わせ" : "Contact"}
+              </Link>
 
-              <Link href={p("/privacy")}>Privacy</Link>
+              <Link href={p("/privacy")}>
+                {isJapanese
+                  ? "プライバシーポリシー"
+                  : "Privacy"}
+              </Link>
 
-              <Link href={p("/terms")}>Terms</Link>
+              <Link href={p("/terms")}>
+                {isJapanese ? "利用規約" : "Terms"}
+              </Link>
 
-              <Link href={p("/disclaimer")}>Disclaimer</Link>
+              <Link href={p("/disclaimer")}>
+                {isJapanese ? "免責事項" : "Disclaimer"}
+              </Link>
             </div>
           </div>
         </div>

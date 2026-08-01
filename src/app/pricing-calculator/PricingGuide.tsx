@@ -19,7 +19,7 @@ export default function PricingGuide({
             "適切な価格設定は利益を左右する最も重要な要素の一つです。価格が低すぎると利益が減少し、高すぎると販売数量が減少する可能性があります。",
 
           intro2:
-            "この価格設定ツールでは、原価と希望利益率から適切な販売価格を計算できます。利益・マークアップ・税込価格も同時に確認できます。",
+            "この価格設定ツールでは、原価と希望利益率から適切な販売価格を計算できます。利益・原価利益率・税込価格も同時に確認できます。",
 
           exampleTitle: "計算例",
 
@@ -41,7 +41,7 @@ export default function PricingGuide({
               value: "¥2,143",
             },
             {
-              label: "マークアップ",
+              label: "原価利益率",
               value: "42.9%",
             },
             {
@@ -64,7 +64,7 @@ export default function PricingGuide({
             "価格設定は売上だけでなく利益にも直接影響します。適切な価格を設定することで、十分な利益を確保しながら競争力も維持できます。",
 
           why2:
-            "価格を変更する前に利益率やマークアップを確認することで、より合理的な経営判断ができます。",
+            "価格を変更する前に利益率や原価利益率を確認することで、より合理的な経営判断ができます。",
 
           faq: [
             {
@@ -73,14 +73,14 @@ export default function PricingGuide({
                 "販売価格に対する利益の割合です。",
             },
             {
-              question: "マークアップとは？",
+              question: "原価利益率とは？",
               answer:
-                "原価に対してどれだけ価格を上乗せしたかを表します。",
+                "原価利益率とは、原価に対してどれだけ利益を上乗せしているかを示す割合です。",
             },
             {
-              question: "利益率とマークアップは同じですか？",
+              question: "利益率と原価利益率の違いは？",
               answer:
-                "違います。計算方法が異なるため数値も異なります。",
+                "利益率は販売価格に対する利益の割合です。一方、原価利益率は原価に対してどれだけ利益を上乗せしているかを示します。計算方法が異なるため、数値も異なります。",
             },
             {
               question: "税込価格も計算できますか？",
@@ -114,7 +114,7 @@ export default function PricingGuide({
             },
           ],
         }
-      : {
+              : {
           title: "Understanding Pricing",
 
           intro1:
@@ -122,7 +122,8 @@ export default function PricingGuide({
 
           intro2:
             "This calculator helps you determine the selling price needed to achieve your desired profit margin while also showing your profit, markup, and final price including tax.",
-                      exampleTitle: "Example Calculation",
+
+          exampleTitle: "Example Calculation",
 
           rows: [
             {
@@ -218,7 +219,7 @@ export default function PricingGuide({
 
   return (
     <>
-      <section
+          <section
         style={{
           marginTop: "70px",
         }}
@@ -266,7 +267,8 @@ export default function PricingGuide({
         formula={text.formula}
         explanation={text.formulaExplanation}
       />
-            <section
+
+      <section
         style={{
           marginTop: "60px",
         }}
@@ -304,9 +306,7 @@ export default function PricingGuide({
         </p>
       </section>
 
-      <FAQ
-        items={text.faq}
-      />
+      <FAQ items={text.faq} />
 
       <RelatedCalculators
         calculators={text.relatedCalculators}

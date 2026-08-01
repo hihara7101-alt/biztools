@@ -1,125 +1,90 @@
 import type { Metadata } from "next";
+import PageContainer from "@/components/PageContainer";
 
 export const metadata: Metadata = {
-  title: "About | BizTools",
+  title: "BizToolsについて",
   description:
-    "Learn about BizTools and our mission to provide free business calculators for entrepreneurs, freelancers, and small businesses.",
+    "BizToolsについて。起業家・個人事業主・中小企業向けの無料ビジネス計算ツールを提供しています。",
 };
 
-export default function AboutPage() {
+export default function AboutPageJa() {
   return (
-    <main
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        padding: "70px 24px",
-      }}
-    >
-      <h1
+    <PageContainer title="BizToolsについて">
+      <p>
+        BizToolsは、起業家、個人事業主、フリーランス、中小企業の皆さまが、
+        ビジネスに必要な計算を簡単かつ正確に行えるように作られた無料のビジネス計算サイトです。
+      </p>
+
+      <p style={{ marginTop: 24 }}>
+        利益計算、損益分岐点、価格設定、売上目標、ROI（投資利益率）など、
+        日々の経営判断に必要な計算を素早く行えるツールを提供しています。
+      </p>
+
+      <p style={{ marginTop: 24 }}>
+        複雑なExcelや専門知識がなくても、誰でも簡単に数字を確認し、
+        より良い意思決定ができることを目指しています。
+      </p>
+
+      <h2
         style={{
-          fontSize: "52px",
-          fontWeight: 800,
+          marginTop: 50,
+          fontSize: 30,
+          fontWeight: 700,
           color: "#111827",
         }}
       >
-        About BizTools
-      </h1>
+        私たちのミッション
+      </h2>
 
-      <p
-        style={{
-          marginTop: "30px",
-          fontSize: "20px",
-          lineHeight: 1.8,
-          color: "#6B7280",
-        }}
-      >
-        BizTools is a collection of free business calculators designed to help
-        entrepreneurs, freelancers, online sellers, and small business owners
-        make smarter financial decisions.
+      <p style={{ marginTop: 20 }}>
+        シンプルで信頼できる無料ツールを提供し、
+        ビジネスオーナーが数字を理解し、自信を持って経営判断できるよう支援することです。
       </p>
 
-      <section style={{ marginTop: "60px" }}>
-        <h2
-          style={{
-            fontSize: "32px",
-            fontWeight: 700,
-            color: "#111827",
-          }}
-        >
-          Our Mission
-        </h2>
+      <h2
+        style={{
+          marginTop: 50,
+          fontSize: 30,
+          fontWeight: 700,
+          color: "#111827",
+        }}
+      >
+        BizToolsの特徴
+      </h2>
 
-        <p
-          style={{
-            marginTop: "20px",
-            fontSize: "17px",
-            lineHeight: 1.9,
-            color: "#6B7280",
-          }}
-        >
-          Running a business requires making decisions based on numbers. Our
-          mission is to make financial calculations simple, fast, and accessible
-          to everyone without requiring spreadsheets or expensive software.
-        </p>
-      </section>
+      <ul
+        style={{
+          marginTop: 20,
+          paddingLeft: 24,
+          lineHeight: 2,
+        }}
+      >
+        <li>完全無料で利用可能</li>
+        <li>会員登録不要</li>
+        <li>起業家・中小企業向けに設計</li>
+        <li>日本語・英語に対応</li>
+        <li>シンプルで使いやすい操作</li>
+      </ul>
 
-      <section style={{ marginTop: "60px" }}>
-        <h2
-          style={{
-            fontSize: "32px",
-            fontWeight: 700,
-            color: "#111827",
-          }}
-        >
-          Who BizTools Is For
-        </h2>
+      <h2
+        style={{
+          marginTop: 50,
+          fontSize: 30,
+          fontWeight: 700,
+          color: "#111827",
+        }}
+      >
+        お問い合わせ
+      </h2>
 
-        <ul
-          style={{
-            marginTop: "20px",
-            paddingLeft: "22px",
-            lineHeight: 2,
-            color: "#6B7280",
-            fontSize: "17px",
-          }}
-        >
-          <li>Entrepreneurs</li>
-          <li>Freelancers</li>
-          <li>Small business owners</li>
-          <li>Online sellers</li>
-          <li>Consultants</li>
-          <li>Students learning business and finance</li>
-        </ul>
-      </section>
+      <p style={{ marginTop: 20 }}>
+        ご意見・ご要望・新しい計算ツールのアイデアなどがございましたら、
+        お気軽にお問い合わせください。
+      </p>
 
-      <section style={{ marginTop: "60px" }}>
-        <h2
-          style={{
-            fontSize: "32px",
-            fontWeight: 700,
-            color: "#111827",
-          }}
-        >
-          Why Use BizTools?
-        </h2>
-
-        <ul
-          style={{
-            marginTop: "20px",
-            paddingLeft: "22px",
-            lineHeight: 2,
-            color: "#6B7280",
-            fontSize: "17px",
-          }}
-        >
-          <li>100% free</li>
-          <li>No registration required</li>
-          <li>Instant calculations</li>
-          <li>Mobile friendly</li>
-          <li>English and Japanese support</li>
-          <li>Designed specifically for business decisions</li>
-        </ul>
-      </section>
-    </main>
+      <p style={{ marginTop: 20 }}>
+        詳細は「お問い合わせ」ページをご利用ください。
+      </p>
+    </PageContainer>
   );
 }

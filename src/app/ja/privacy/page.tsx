@@ -1,177 +1,59 @@
-import { createMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+import PageContainer from "@/components/PageContainer";
 
-export const metadata = createMetadata({
+export const metadata: Metadata = {
   title: "プライバシーポリシー",
-  description:
-    "BizToolsにおける個人情報の取り扱い、Cookie、Google Analytics、広告に関する方針をご説明します。",
-  path: "/privacy",
-  lang: "ja",
-});
+  description: "BizToolsのプライバシーポリシー",
+};
 
-export default function PrivacyPage() {
+export default function PrivacyPageJa() {
   return (
-    <main
-      style={{
-        maxWidth: "900px",
-        margin: "60px auto",
-        padding: "0 24px",
-      }}
-    >
-      <h1
-        style={{
-          fontSize: "44px",
-          fontWeight: 800,
-          color: "#111827",
-        }}
-      >
-        プライバシーポリシー
-      </h1>
-
-      <p
-        style={{
-          marginTop: "24px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsは、お客様のプライバシーを尊重しています。
-        このプライバシーポリシーでは、本ウェブサイトをご利用いただく際に
-        取得される可能性のある情報と、その利用方法について説明します。
+    <PageContainer title="プライバシーポリシー">
+      <p>
+        BizToolsでは、お客様の個人情報保護を重要視しています。
+        本ページでは、当サイトにおける情報の取り扱いについて説明します。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
         取得する情報
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsでは、計算ツールをご利用いただくために
-        アカウント登録や個人情報の入力は必要ありません。
-        個人情報を取得するのは、お問い合わせなどで
-        お客様が自発的にメールを送信された場合のみです。
+      <p style={{ marginTop: 20 }}>
+        BizToolsは、計算ツールの利用にあたり個人情報の登録を必要としません。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
+      <p style={{ marginTop: 20 }}>
+        アクセス解析のため、ブラウザ情報や閲覧ページなどの匿名データを収集する場合があります。
+      </p>
+
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
         Cookieについて
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本サイトでは、ユーザー体験の向上、
-        利用設定の保存、アクセス解析のために
-        Cookieを使用する場合があります。
+      <p style={{ marginTop: 20 }}>
+        当サイトでは、利便性向上、アクセス解析、および広告配信のためCookieを利用する場合があります。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        Google Analytics
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
+        第三者サービス
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsでは、サイトの利用状況を把握するために
-        Google Analyticsを利用する場合があります。
-        Google AnalyticsはCookieを利用して、
-        匿名の利用データを収集することがあります。
+      <p style={{ marginTop: 20 }}>
+        Google AnalyticsやGoogle AdSenseなどの第三者サービスを利用する場合があります。
+        これらのサービスは、それぞれのプライバシーポリシーに従って情報を取り扱います。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        広告について
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
+        ポリシーの変更
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsでは、Google AdSenseなどの広告配信サービスを
-        利用する場合があります。
-        これらのサービスでは、お客様の興味・関心に応じた広告を表示するために
-        Cookieが使用されることがあります。
+      <p style={{ marginTop: 20 }}>
+        本ポリシーは予告なく変更される場合があります。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        プライバシーポリシーの変更
-      </h2>
-
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本プライバシーポリシーは、
-        必要に応じて更新される場合があります。
-        変更内容はこのページに掲載いたします。
+      <p style={{ marginTop: 40 }}>
+        最終更新：2026年7月
       </p>
-
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        お問い合わせ
-      </h2>
-
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本プライバシーポリシーに関するご質問がございましたら、
-        お問い合わせページよりお気軽にご連絡ください。
-      </p>
-    </main>
+    </PageContainer>
   );
 }

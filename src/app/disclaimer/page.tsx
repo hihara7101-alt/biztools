@@ -1,27 +1,26 @@
-import { createMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
 
-export const metadata = createMetadata({
-  title: "Disclaimer",
+export const metadata: Metadata = {
+  title: "Disclaimer | BizTools",
   description:
-    "Read the disclaimer for BizTools and understand the limitations of the information and calculators provided on this website.",
-  path: "/disclaimer",
-  lang: "en",
-});
+    "Read the BizTools disclaimer regarding the use of our calculators and business information.",
+};
 
 export default function DisclaimerPage() {
   return (
     <main
       style={{
-        maxWidth: "900px",
-        margin: "60px auto",
-        padding: "0 24px",
+        maxWidth: 900,
+        margin: "0 auto",
+        padding: "70px 24px",
       }}
     >
       <h1
         style={{
-          fontSize: "44px",
+          fontSize: "54px",
           fontWeight: 800,
           color: "#111827",
+          lineHeight: 1.15,
         }}
       >
         Disclaimer
@@ -30,125 +29,103 @@ export default function DisclaimerPage() {
       <p
         style={{
           marginTop: "24px",
+          color: "#6B7280",
+          fontSize: "17px",
           lineHeight: 1.9,
-          color: "#4B5563",
         }}
       >
-        The information and calculators provided on BizTools are for
-        general informational and educational purposes only.
+        Last updated: June 2026
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        No Professional Advice
-      </h2>
+      <section style={{ marginTop: "60px" }}>
+        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
+          General Information
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        Nothing on this website should be considered legal,
-        accounting, tax, financial, or investment advice.
-        You should consult an appropriate professional before
-        making important business or financial decisions.
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          BizTools provides free business calculators and educational
+          information for general informational purposes only.
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        Accuracy
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
+          No Professional Advice
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        While we strive to provide accurate calculations and
-        up-to-date information, BizTools makes no warranties
-        regarding the completeness, reliability, or accuracy of
-        any information provided.
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          The information provided on this website should not be considered
+          financial, legal, accounting, tax, or investment advice.
+          Always consult a qualified professional before making important
+          business or financial decisions.
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        Limitation of Liability
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
+          Calculator Accuracy
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizTools shall not be liable for any direct, indirect,
-        incidental, or consequential damages resulting from the
-        use of this website or reliance on any information
-        provided.
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          Although we strive to ensure our calculators produce accurate
+          results, we do not guarantee that all calculations are free from
+          errors or suitable for every business situation.
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        External Links
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
+          Limitation of Liability
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        This website may contain links to third-party websites.
-        We are not responsible for the content or privacy
-        practices of those websites.
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          BizTools shall not be liable for any loss, damages, or business
+          decisions resulting from the use of this website or its
+          calculators.
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        Contact
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
+          External Links
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        If you have questions regarding this Disclaimer,
-        please contact us through our Contact page.
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          This website may contain links to third-party websites. We are not
+          responsible for the content, accuracy, or privacy practices of
+          those websites.
+        </p>
+      </section>
     </main>
   );
 }

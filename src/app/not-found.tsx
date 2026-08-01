@@ -4,26 +4,18 @@ export default function NotFound() {
   return (
     <main
       style={{
-        maxWidth: "800px",
+        maxWidth: 900,
         margin: "0 auto",
-        padding: "120px 24px",
+        padding: "100px 24px",
         textAlign: "center",
       }}
     >
-      <div
-        style={{
-          fontSize: "72px",
-        }}
-      >
-        🔍
-      </div>
-
       <h1
         style={{
-          marginTop: "24px",
-          fontSize: "52px",
+          fontSize: "96px",
           fontWeight: 800,
-          color: "#111827",
+          color: "#2563EB",
+          marginBottom: "20px",
         }}
       >
         404
@@ -31,9 +23,8 @@ export default function NotFound() {
 
       <h2
         style={{
-          marginTop: "12px",
-          fontSize: "32px",
-          fontWeight: 700,
+          fontSize: "42px",
+          fontWeight: 800,
           color: "#111827",
         }}
       >
@@ -44,32 +35,67 @@ export default function NotFound() {
         style={{
           marginTop: "24px",
           color: "#6B7280",
-          lineHeight: 1.8,
           fontSize: "18px",
-          maxWidth: "600px",
+          lineHeight: 1.8,
+          maxWidth: "620px",
           marginInline: "auto",
         }}
       >
-        Sorry, the page you're looking for doesn't exist or may have
-        been moved.
+        Sorry, the page you're looking for doesn't exist or may have been
+        moved.
       </p>
 
-      <Link
-        href="/"
+      <div
         style={{
-          display: "inline-block",
-          marginTop: "40px",
-          background: "#2563EB",
-          color: "#FFFFFF",
-          padding: "16px 32px",
-          borderRadius: "12px",
-          textDecoration: "none",
-          fontWeight: 700,
-          fontSize: "17px",
+          marginTop: "50px",
+          display: "flex",
+          justifyContent: "center",
+          gap: "18px",
+          flexWrap: "wrap",
         }}
       >
-        ← Back to Home
-      </Link>
+        <Link
+          href="/"
+          style={{
+            background: "#2563EB",
+            color: "#fff",
+            padding: "14px 28px",
+            borderRadius: "12px",
+            textDecoration: "none",
+            fontWeight: 700,
+          }}
+        >
+          Home
+        </Link>
+
+        <Link
+          href="/profit-calculator"
+          style={{
+            background: "#F3F4F6",
+            color: "#111827",
+            padding: "14px 28px",
+            borderRadius: "12px",
+            textDecoration: "none",
+            fontWeight: 700,
+          }}
+        >
+          Profit Calculator
+        </Link>
+
+        <Link
+          href="/break-even-calculator"
+          style={{
+            background: "#F3F4F6",
+            color: "#111827",
+            padding: "14px 28px",
+            borderRadius: "12px",
+            textDecoration: "none",
+            fontWeight: 700,
+          }}
+        >
+          Break-even Calculator
+        </Link>
+      </div>
     </main>
   );
 }

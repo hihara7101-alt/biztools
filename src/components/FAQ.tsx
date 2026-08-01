@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function FAQ({
-  title = "Frequently Asked Questions",
+  title,
   items,
 }: Props) {
   return (
@@ -26,7 +26,9 @@ export default function FAQ({
           marginBottom: "24px",
         }}
       >
-        {title}
+        {title ?? (items[0]?.question.match(/[ぁ-んァ-ヶ一-龯]/)
+          ? "よくある質問"
+          : "Frequently Asked Questions")}
       </h2>
 
       <div

@@ -1,175 +1,54 @@
-import { createMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+import PageContainer from "@/components/PageContainer";
 
-export const metadata = createMetadata({
+export const metadata: Metadata = {
   title: "利用規約",
-  description:
-    "BizToolsの利用規約です。本ウェブサイトおよび無料ビジネス計算ツールをご利用いただく際の条件について説明しています。",
-  path: "/terms",
-  lang: "ja",
-});
+  description: "BizTools 利用規約",
+};
 
-export default function TermsPage() {
+export default function TermsPageJa() {
   return (
-    <main
-      style={{
-        maxWidth: "900px",
-        margin: "60px auto",
-        padding: "0 24px",
-      }}
-    >
-      <h1
-        style={{
-          fontSize: "44px",
-          fontWeight: 800,
-          color: "#111827",
-        }}
-      >
-        利用規約
-      </h1>
-
-      <p
-        style={{
-          marginTop: "24px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsへようこそ。本ウェブサイトをご利用いただくことで、
-        本利用規約に同意したものとみなされます。
-        本規約に同意いただけない場合は、本サイトのご利用をお控えください。
+    <PageContainer title="利用規約">
+      <p>
+        BizToolsをご利用いただくことで、本利用規約に同意したものとみなします。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        ウェブサイトの利用
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
+        サービスについて
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsでは、無料のビジネス計算ツールおよび
-        ビジネスに関する情報を提供しています。
-        本サイトは、合法的な個人利用または事業利用の目的でご利用ください。
+      <p style={{ marginTop: 20 }}>
+        BizToolsは、無料のビジネス計算ツールおよび参考情報を提供しています。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        専門的なアドバイスではありません
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
+        専門的な助言ではありません
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsで提供する計算結果および情報は、
-        一般的な情報提供のみを目的としています。
-        法律、税務、会計、投資、またはその他の専門的な助言を
-        提供するものではありません。
+      <p style={{ marginTop: 20 }}>
+        当サイトの内容は一般的な情報提供を目的としており、
+        法律・税務・会計・投資等の専門的助言を提供するものではありません。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        情報の正確性
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
+        利用者の責任
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        当サイトでは正確な計算結果および情報の提供に努めていますが、
-        その完全性、正確性、最新性を保証するものではありません。
-        ご利用の際は、ご自身の判断と責任でご活用ください。
+      <p style={{ marginTop: 20 }}>
+        計算結果を利用した意思決定については、利用者ご自身の責任でご判断ください。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        知的財産権
-      </h2>
-
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsに掲載されている文章、デザイン、ロゴ、
-        計算ツールなどのコンテンツは、
-        特別な記載がない限り著作権その他の知的財産権により保護されています。
-      </p>
-
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
+      <h2 style={{ marginTop: 50, fontSize: 30, fontWeight: 700 }}>
         規約の変更
       </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        当サイトは、必要に応じて本利用規約を予告なく変更する場合があります。
-        変更後も継続して本サイトをご利用いただいた場合、
-        変更後の利用規約に同意したものとみなされます。
+      <p style={{ marginTop: 20 }}>
+        本規約は予告なく変更される場合があります。
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        お問い合わせ
-      </h2>
-
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本利用規約に関するご質問は、
-        お問い合わせページよりお気軽にご連絡ください。
+      <p style={{ marginTop: 40 }}>
+        最終更新：2026年7月
       </p>
-    </main>
+    </PageContainer>
   );
 }

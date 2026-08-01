@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://biztools.site"), // Change this after purchasing your domain
@@ -78,17 +79,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        style={{
-          margin: 0,
-          background: "#F9FAFB",
-          color: "#111827",
-          fontFamily:
-            "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-          WebkitFontSmoothing: "antialiased",
-          MozOsxFontSmoothing: "grayscale",
-        }}
-      >
-        <Header />
+  style={{
+    margin: 0,
+    background: "#F9FAFB",
+    color: "#111827",
+    fontFamily:
+      "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    WebkitFontSmoothing: "antialiased",
+    MozOsxFontSmoothing: "grayscale",
+  }}
+>
+  <StructuredData />
+
+  <Header />
 
         <main
           style={{

@@ -7,11 +7,17 @@ type Calculator = {
 
 type Props = {
   calculators: Calculator[];
+  title?: string;
 };
 
 export default function RelatedCalculators({
   calculators,
+  title,
 }: Props) {
+  const isJapanese =
+    calculators.length > 0 &&
+    /[ぁ-んァ-ヶ一-龯]/.test(calculators[0].title);
+
   return (
     <section
       style={{
@@ -26,7 +32,7 @@ export default function RelatedCalculators({
           marginBottom: "24px",
         }}
       >
-        Related Calculators
+        {title ?? (isJapanese ? "関連する計算ツール" : "Related Calculators")}
       </h2>
 
       <div
@@ -62,7 +68,7 @@ export default function RelatedCalculators({
                 fontSize: "15px",
               }}
             >
-              Open Calculator →
+              {isJapanese ? "計算ツールを開く →" : "Open Calculator →"}
             </div>
           </Link>
         ))}

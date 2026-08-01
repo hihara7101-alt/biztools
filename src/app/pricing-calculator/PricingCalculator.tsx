@@ -80,7 +80,7 @@ export default function PricingCalculator({
 
           profit: "利益",
 
-          markup: "マークアップ",
+          markup: "原価利益率",
 
           taxPrice: "税込価格",
 

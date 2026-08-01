@@ -5,8 +5,50 @@ import ProfitGuide from "./ProfitGuide";
 
 export const metadata: Metadata = {
   title: "Profit Calculator | BizTools",
+
   description:
-    "Calculate gross profit, net profit, gross margin and net profit margin instantly. Free business calculator for entrepreneurs, freelancers and small business owners.",
+    "Free Profit Calculator for entrepreneurs and small businesses. Calculate profit, gross margin, net margin, contribution margin and profitability instantly.",
+
+  keywords: [
+    "profit calculator",
+    "gross profit calculator",
+    "net profit calculator",
+    "profit margin calculator",
+    "business profit calculator",
+    "contribution margin calculator",
+    "small business calculator",
+  ],
+
+  alternates: {
+    canonical: "https://biztools.site/profit-calculator",
+
+    languages: {
+      en: "https://biztools.site/profit-calculator",
+      ja: "https://biztools.site/ja/profit-calculator",
+    },
+  },
+
+  openGraph: {
+    title: "Profit Calculator | BizTools",
+
+    description:
+      "Calculate profit, gross margin, net margin and contribution margin instantly.",
+
+    url: "https://biztools.site/profit-calculator",
+
+    siteName: "BizTools",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Profit Calculator | BizTools",
+
+    description:
+      "Free business profit calculator for entrepreneurs and small businesses.",
+  },
 };
 
 export default function ProfitCalculatorPage() {
@@ -39,9 +81,9 @@ export default function ProfitCalculatorPage() {
             maxWidth: "760px",
           }}
         >
-          Calculate gross profit, net profit, gross margin and net
-          profit margin in seconds. Perfect for entrepreneurs,
-          freelancers, online sellers and small business owners.
+          Calculate profit, gross margin, net margin, and contribution margin
+          in seconds. Built for entrepreneurs, freelancers, online sellers,
+          and small business owners.
         </p>
       </section>
 

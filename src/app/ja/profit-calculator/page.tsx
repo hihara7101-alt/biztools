@@ -24,7 +24,8 @@ export default function ProfitCalculatorPageJa() {
             fontSize: "54px",
             fontWeight: 800,
             color: "#111827",
-            lineHeight: 1.15,
+            lineHeight: 1.25,
+            paddingTop: "6px",
           }}
         >
           利益計算ツール
@@ -47,7 +48,7 @@ export default function ProfitCalculatorPageJa() {
 
       <ProfitCalculator lang="ja" />
 
-      <ProfitGuide />
+      <ProfitGuide lang="ja" />
     </main>
   );
 }

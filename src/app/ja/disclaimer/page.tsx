@@ -1,27 +1,26 @@
-import { createMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
 
-export const metadata = createMetadata({
-  title: "免責事項",
+export const metadata: Metadata = {
+  title: "免責事項 | BizTools",
   description:
-    "BizToolsで提供する情報および計算ツールに関する免責事項をご確認ください。",
-  path: "/disclaimer",
-  lang: "ja",
-});
+    "BizToolsの免責事項です。本サイトおよび計算ツールのご利用について説明しています。",
+};
 
-export default function DisclaimerPage() {
+export default function DisclaimerPageJa() {
   return (
     <main
       style={{
-        maxWidth: "900px",
-        margin: "60px auto",
-        padding: "0 24px",
+        maxWidth: 900,
+        margin: "0 auto",
+        padding: "70px 24px",
       }}
     >
       <h1
         style={{
-          fontSize: "44px",
+          fontSize: "54px",
           fontWeight: 800,
           color: "#111827",
+          lineHeight: 1.15,
         }}
       >
         免責事項
@@ -30,127 +29,129 @@ export default function DisclaimerPage() {
       <p
         style={{
           marginTop: "24px",
+          color: "#6B7280",
+          fontSize: "17px",
           lineHeight: 1.9,
-          color: "#4B5563",
         }}
       >
-        BizToolsで提供する情報および計算ツールは、
-        一般的な情報提供および学習目的のために提供されています。
+        最終更新日：2026年6月
       </p>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        専門的な助言ではありません
-      </h2>
+      <section style={{ marginTop: "60px" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          一般的な情報について
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本サイトの内容は、
-        法律、税務、会計、投資、金融などの専門的な助言を
-        提供するものではありません。
-        重要な判断を行う際は、
-        必要に応じて専門家へご相談ください。
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          BizToolsでは、無料のビジネス計算ツールおよび情報を提供しています。
+          本サイトの内容は一般的な情報提供を目的としており、
+          特定の状況に対する助言を行うものではありません。
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        情報の正確性
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          専門的なアドバイスではありません
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        BizToolsでは、
-        正確で最新の情報を提供するよう努めていますが、
-        情報の完全性、正確性、
-        信頼性について保証するものではありません。
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          本サイトの情報は、会計・税務・法律・投資・経営に関する
+          専門的なアドバイスではありません。
+          重要な判断を行う際は、専門家へご相談ください。
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        責任の制限
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          計算結果について
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本サイトの利用または掲載情報を利用したことにより
-        生じたいかなる損害についても、
-        BizToolsは責任を負いません。
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          計算ツールは正確な結果を提供できるよう努めていますが、
+          計算結果の完全性・正確性・適用性を保証するものではありません。
+          必ずご自身でも内容をご確認ください。
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        外部サイトへのリンク
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          責任の制限
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本サイトには第三者のウェブサイトへのリンクが
-        含まれる場合があります。
-        それらのサイトの内容や
-        プライバシー保護について、
-        当サイトは責任を負いません。
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          本サイトの情報または計算ツールを利用したことによって生じた
+          いかなる損害・損失・逸失利益についても、
+          BizToolsは責任を負いません。
+          最終的な判断は利用者ご自身の責任でお願いいたします。
+        </p>
+      </section>
 
-      <h2
-        style={{
-          marginTop: "50px",
-          fontSize: "30px",
-          fontWeight: 700,
-        }}
-      >
-        お問い合わせ
-      </h2>
+      <section style={{ marginTop: "50px" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          外部リンクについて
+        </h2>
 
-      <p
-        style={{
-          marginTop: "18px",
-          lineHeight: 1.9,
-          color: "#4B5563",
-        }}
-      >
-        本免責事項についてご質問がございましたら、
-        お問い合わせページよりご連絡ください。
-      </p>
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+          }}
+        >
+          当サイトには外部サイトへのリンクが含まれる場合があります。
+          リンク先の内容やサービスについて、
+          BizToolsは責任を負いません。
+        </p>
+      </section>
     </main>
   );
 }

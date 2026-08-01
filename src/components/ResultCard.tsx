@@ -21,6 +21,13 @@ export default function ResultCard({
         borderRadius: "20px",
         padding: "28px",
         boxShadow: "0 4px 12px rgba(0,0,0,.04)",
+
+        display: "flex",
+        flexDirection: "column",
+
+        minHeight: "180px",
+
+        transition: "all .2s ease",
       }}
     >
       <div
@@ -28,6 +35,7 @@ export default function ResultCard({
           color: "#6B7280",
           fontSize: "15px",
           fontWeight: 600,
+          letterSpacing: ".2px",
         }}
       >
         {title}
@@ -35,27 +43,37 @@ export default function ResultCard({
 
       <div
         style={{
-          marginTop: "12px",
+          marginTop: "14px",
           fontSize: "40px",
           fontWeight: 800,
           color,
+
+          lineHeight: 1.1,
+
+          wordBreak: "break-word",
         }}
       >
         {value}
       </div>
 
-      {subtitle && (
-        <div
-          style={{
-            marginTop: "12px",
-            color: "#6B7280",
-            fontSize: "15px",
-            lineHeight: 1.6,
-          }}
-        >
-          {subtitle}
-        </div>
-      )}
+      <div
+        style={{
+          marginTop: "auto",
+        }}
+      >
+        {subtitle && (
+          <div
+            style={{
+              paddingTop: "18px",
+              color: "#6B7280",
+              fontSize: "15px",
+              lineHeight: 1.6,
+            }}
+          >
+            {subtitle}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
