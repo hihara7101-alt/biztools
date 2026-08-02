@@ -1,12 +1,6 @@
 import type { MetadataRoute } from "next";
 
-function getBaseUrl() {
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  }
-
-  return "http://localhost:3000";
-}
+const baseUrl = "https://uttacca.com";
 
 const japanesePages = [
   "",
@@ -39,7 +33,6 @@ const englishPages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getBaseUrl();
   const pages = [...japanesePages, ...englishPages];
 
   return pages.map((page) => ({
@@ -50,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       page === "" || page === "/en"
         ? 1
         : page.includes("calculator")
-          ? 0.9
-          : 0.7,
+        ? 0.9
+        : 0.7,
   }));
 }
