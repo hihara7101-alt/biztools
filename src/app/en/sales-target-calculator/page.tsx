@@ -4,12 +4,12 @@ import SalesTargetCalculator from "../../sales-target-calculator/SalesTargetCalc
 import SalesTargetGuide from "../../sales-target-calculator/SalesTargetGuide";
 
 export const metadata: Metadata = {
-  title: "売上目標計算ツール | BizTools",
+  title: "Sales Target Calculator | BizTools",
   description:
-    "目標利益を達成するために必要な売上高・販売数量を計算できる無料ツール。起業家、フリーランス、中小企業向け。",
+    "Calculate how many sales you need to reach your target profit. Free calculator for entrepreneurs, freelancers and small business owners.",
 };
 
-export default function SalesTargetCalculatorPageJa() {
+export default function SalesTargetCalculatorPage() {
   return (
     <main
       style={{
@@ -24,11 +24,10 @@ export default function SalesTargetCalculatorPageJa() {
             fontSize: "54px",
             fontWeight: 800,
             color: "#111827",
-            lineHeight: 1.25,
-            paddingTop: "6px",
+            lineHeight: 1.15,
           }}
         >
-          売上目標計算ツール
+          Sales Target Calculator
         </h1>
 
         <p
@@ -40,15 +39,15 @@ export default function SalesTargetCalculatorPageJa() {
             maxWidth: "760px",
           }}
         >
-          目標利益を達成するために必要な売上高や販売数量を数秒で計算できます。
-          事業計画、予算管理、売上目標の設定に役立つ
-          無料ビジネス計算ツールです。
+          Calculate the number of sales and revenue required to achieve
+          your desired profit target. Perfect for business planning,
+          budgeting and setting realistic sales goals.
         </p>
       </section>
 
-      <SalesTargetCalculator lang="ja" />
+      <SalesTargetCalculator />
 
-      <SalesTargetGuide lang="ja" />
+      <SalesTargetGuide />
     </main>
   );
 }

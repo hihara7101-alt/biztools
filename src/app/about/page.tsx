@@ -2,30 +2,27 @@ import type { Metadata } from "next";
 import PageContainer from "@/components/PageContainer";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "このサイトについて",
   description:
-    "Learn more about BizTools and our mission to provide free business calculators for entrepreneurs, freelancers, and small business owners.",
+    "BizToolsについて。起業家・個人事業主・中小企業向けの無料ビジネス計算ツールを提供しています。",
 };
 
-export default function AboutPage() {
+export default function AboutPageJa() {
   return (
-    <PageContainer title="About BizTools">
+    <PageContainer title="このサイトについて">
       <p>
-        BizTools was created to make business calculations simple, accurate,
-        and accessible for everyone.
+        BizToolsは、起業家、個人事業主、フリーランス、中小企業の皆さまが、
+        ビジネスに必要な計算を簡単かつ正確に行えるように作られた無料のビジネス計算サイトです。
       </p>
 
       <p style={{ marginTop: 24 }}>
-        Whether you're launching your first business, running a small company,
-        freelancing, or managing an online store, understanding your numbers is
-        one of the most important parts of making better decisions.
+        利益計算、損益分岐点、価格設定、売上目標、ROI（投資利益率）など、
+        日々の経営判断に役立つ計算を素早く行えるツールを提供しています。
       </p>
 
       <p style={{ marginTop: 24 }}>
-        Our calculators are designed to help you quickly calculate profits,
-        break-even points, pricing, sales targets, return on investment (ROI),
-        and other essential business metrics without needing complicated
-        spreadsheets.
+        複雑なExcelや専門知識がなくても、誰でも簡単に数字を確認し、
+        より良い意思決定ができることを目指しています。
       </p>
 
       <h2
@@ -36,16 +33,12 @@ export default function AboutPage() {
           color: "#111827",
         }}
       >
-        Our Mission
+        私たちのミッション
       </h2>
 
       <p style={{ marginTop: 20 }}>
-        Our mission is simple:
-      </p>
-
-      <p style={{ marginTop: 20 }}>
-        To provide free, reliable, and easy-to-use business calculators that
-        help entrepreneurs make smarter financial decisions.
+        シンプルで信頼できる無料ツールを提供し、
+        ビジネスオーナーが数字を理解し、自信を持って経営判断できるよう支援することです。
       </p>
 
       <h2
@@ -56,7 +49,7 @@ export default function AboutPage() {
           color: "#111827",
         }}
       >
-        Why BizTools?
+        BizToolsの特徴
       </h2>
 
       <ul
@@ -66,11 +59,11 @@ export default function AboutPage() {
           lineHeight: 2,
         }}
       >
-        <li>Free to use</li>
-        <li>No registration required</li>
-        <li>Designed for entrepreneurs and small businesses</li>
-        <li>Available in English and Japanese</li>
-        <li>Simple, fast, and accurate calculations</li>
+        <li>完全無料で利用可能</li>
+        <li>会員登録不要</li>
+        <li>起業家・中小企業向けに設計</li>
+        <li>日本語・英語に対応</li>
+        <li>シンプルで使いやすい操作</li>
       </ul>
 
       <h2
@@ -81,16 +74,16 @@ export default function AboutPage() {
           color: "#111827",
         }}
       >
-        Contact
+        お問い合わせ
       </h2>
 
       <p style={{ marginTop: 20 }}>
-        If you have suggestions, discover an error, or would like to recommend
-        a new calculator, we'd love to hear from you.
+        ご意見・ご要望・新しい計算ツールのアイデアなどがございましたら、
+        お気軽にお問い合わせください。
       </p>
 
       <p style={{ marginTop: 20 }}>
-        A dedicated contact page is available from the navigation menu.
+        詳細は「お問い合わせ」ページをご利用ください。
       </p>
     </PageContainer>
   );

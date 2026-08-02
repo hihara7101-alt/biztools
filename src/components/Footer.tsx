@@ -6,12 +6,13 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
   const pathname = usePathname();
 
-  const isJapanese = pathname.startsWith("/ja");
+  const isEnglish =
+    pathname === "/en" || pathname.startsWith("/en/");
 
-  const p = (en: string) =>
-    isJapanese
-      ? `/ja${en === "/" ? "" : en}`
-      : en;
+  const p = (path: string) =>
+    isEnglish
+      ? `/en${path === "/" ? "" : path}`
+      : path;
 
   return (
     <footer
@@ -52,15 +53,15 @@ export default function Footer() {
                 lineHeight: 1.8,
               }}
             >
-              {isJapanese
-                ? "起業家・フリーランス・中小企業向けの無料ビジネス計算ツール。"
-                : "Free business calculators for entrepreneurs, freelancers and small businesses."}
+              {isEnglish
+                ? "Free business calculators for entrepreneurs, freelancers and small businesses."
+                : "起業家・フリーランス・中小企業向けの無料ビジネス計算ツール。"}
             </p>
           </div>
 
           <div>
             <h3>
-              {isJapanese ? "計算ツール" : "Calculators"}
+              {isEnglish ? "Calculators" : "計算ツール"}
             </h3>
 
             <div
@@ -72,34 +73,34 @@ export default function Footer() {
               }}
             >
               <Link href={p("/profit-calculator")}>
-                {isJapanese ? "利益計算ツール" : "Profit Calculator"}
+                {isEnglish ? "Profit Calculator" : "利益計算ツール"}
               </Link>
 
               <Link href={p("/break-even-calculator")}>
-                {isJapanese
-                  ? "損益分岐点計算ツール"
-                  : "Break-even Calculator"}
+                {isEnglish
+                  ? "Break-even Calculator"
+                  : "損益分岐点計算ツール"}
               </Link>
 
               <Link href={p("/pricing-calculator")}>
-                {isJapanese ? "価格設定ツール" : "Pricing Calculator"}
+                {isEnglish ? "Pricing Calculator" : "価格設定ツール"}
               </Link>
 
               <Link href={p("/sales-target-calculator")}>
-                {isJapanese
-                  ? "売上目標計算ツール"
-                  : "Sales Target Calculator"}
+                {isEnglish
+                  ? "Sales Target Calculator"
+                  : "売上目標計算ツール"}
               </Link>
 
               <Link href={p("/roi-calculator")}>
-                {isJapanese ? "ROI計算ツール" : "ROI Calculator"}
+                {isEnglish ? "ROI Calculator" : "ROI計算ツール"}
               </Link>
             </div>
           </div>
 
           <div>
             <h3>
-              {isJapanese ? "会社情報" : "Company"}
+              {isEnglish ? "Company" : "会社情報"}
             </h3>
 
             <div
@@ -111,25 +112,23 @@ export default function Footer() {
               }}
             >
               <Link href={p("/about")}>
-                {isJapanese ? "BizToolsについて" : "About"}
+                {isEnglish ? "About" : "BizToolsについて"}
               </Link>
 
               <Link href={p("/contact")}>
-                {isJapanese ? "お問い合わせ" : "Contact"}
+                {isEnglish ? "Contact" : "お問い合わせ"}
               </Link>
 
               <Link href={p("/privacy")}>
-                {isJapanese
-                  ? "プライバシーポリシー"
-                  : "Privacy"}
+                {isEnglish ? "Privacy" : "プライバシーポリシー"}
               </Link>
 
               <Link href={p("/terms")}>
-                {isJapanese ? "利用規約" : "Terms"}
+                {isEnglish ? "Terms" : "利用規約"}
               </Link>
 
               <Link href={p("/disclaimer")}>
-                {isJapanese ? "免責事項" : "Disclaimer"}
+                {isEnglish ? "Disclaimer" : "免責事項"}
               </Link>
             </div>
           </div>
@@ -152,9 +151,13 @@ export default function Footer() {
               gap: "18px",
             }}
           >
-            <Link href="/">English</Link>
+            <Link href={isEnglish ? "/en" : "/"}>
+              {isEnglish ? "English" : "日本語"}
+            </Link>
 
-            <Link href="/ja">日本語</Link>
+            <Link href={isEnglish ? "/" : "/en"}>
+              {isEnglish ? "日本語" : "English"}
+            </Link>
           </div>
         </div>
       </div>

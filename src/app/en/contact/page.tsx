@@ -2,21 +2,22 @@ import type { Metadata } from "next";
 import PageContainer from "@/components/PageContainer";
 
 export const metadata: Metadata = {
-  title: "お問い合わせ",
+  title: "Contact",
   description:
-    "BizToolsへのお問い合わせ、ご意見、ご要望はこちらから。",
+    "Contact BizTools with questions, suggestions, feedback, or calculator requests.",
 };
 
-export default function ContactPageJa() {
+export default function ContactPage() {
   return (
-    <PageContainer title="お問い合わせ">
+    <PageContainer title="Contact">
       <p>
-        BizToolsをご利用いただきありがとうございます。
+        We'd love to hear from you.
       </p>
 
       <p style={{ marginTop: 24 }}>
-        ご質問、ご意見、ご要望、不具合のご報告、新しい計算ツールの
-        アイデアなどがございましたら、お気軽にご連絡ください。
+        Whether you have a question, found an error, want to suggest a new
+        calculator, or simply have feedback about BizTools, feel free to get
+        in touch.
       </p>
 
       <h2
@@ -27,7 +28,7 @@ export default function ContactPageJa() {
           color: "#111827",
         }}
       >
-        メールアドレス
+        Email
       </h2>
 
       <p style={{ marginTop: 20 }}>
@@ -35,7 +36,8 @@ export default function ContactPageJa() {
       </p>
 
       <p style={{ marginTop: 20 }}>
-        ※現在は仮のメールアドレスです。正式公開時に変更予定です。
+        <strong>Note:</strong> This email address is temporary and will be
+        updated after the official BizTools email is created.
       </p>
 
       <h2
@@ -46,11 +48,11 @@ export default function ContactPageJa() {
           color: "#111827",
         }}
       >
-        ご返信について
+        Response Time
       </h2>
 
       <p style={{ marginTop: 20 }}>
-        通常2〜3営業日以内にご返信いたします。
+        We aim to respond to all enquiries within 2–3 business days.
       </p>
 
       <h2
@@ -61,11 +63,12 @@ export default function ContactPageJa() {
           color: "#111827",
         }}
       >
-        ご要望
+        Suggestions
       </h2>
 
       <p style={{ marginTop: 20 }}>
-        「こんな計算ツールが欲しい」というご要望も歓迎しております。
+        We're continually improving BizTools. If there's a business calculator
+        you'd like to see added, we'd be happy to hear your ideas.
       </p>
     </PageContainer>
   );

@@ -4,9 +4,35 @@ import PricingCalculator from "./PricingCalculator";
 import PricingGuide from "./PricingGuide";
 
 export const metadata: Metadata = {
-  title: "Pricing Calculator | BizTools",
+  title: "価格設定ツール | BizTools",
   description:
-    "Calculate the best selling price based on your costs and desired profit margin. Free pricing calculator for entrepreneurs, freelancers and small businesses.",
+    "原価・利益率・税込価格から最適な販売価格を計算できる無料ツール。個人事業主、中小企業、フリーランス、ネットショップ運営者向け。",
+
+  alternates: {
+    canonical: "/pricing-calculator",
+    languages: {
+      "ja-JP": "/pricing-calculator",
+      "en-US": "/en/pricing-calculator",
+      "x-default": "/pricing-calculator",
+    },
+  },
+
+  openGraph: {
+    title: "価格設定ツール | BizTools",
+    description:
+      "原価・希望利益率・税率から最適な販売価格を簡単に計算できる無料ツール。",
+    url: "/pricing-calculator",
+    siteName: "BizTools",
+    locale: "ja_JP",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "価格設定ツール | BizTools",
+    description:
+      "原価・希望利益率・税率から最適な販売価格を簡単に計算できます。",
+  },
 };
 
 export default function PricingCalculatorPage() {
@@ -27,7 +53,7 @@ export default function PricingCalculatorPage() {
             lineHeight: 1.15,
           }}
         >
-          Pricing Calculator
+          価格設定ツール
         </h1>
 
         <p
@@ -39,15 +65,15 @@ export default function PricingCalculatorPage() {
             maxWidth: "760px",
           }}
         >
-          Calculate the ideal selling price based on your product cost,
-          desired profit margin and tax rate. Perfect for online sellers,
-          freelancers and small businesses.
+          原価・希望利益率・税率から最適な販売価格を数秒で計算できます。
+          個人事業主、フリーランス、中小企業、ネットショップ運営者向けの
+          無料ビジネス計算ツールです。
         </p>
       </section>
 
-      <PricingCalculator />
+      <PricingCalculator lang="ja" />
 
-      <PricingGuide />
+      <PricingGuide lang="ja" />
     </main>
   );
 }

@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import Hero from "@/components/Hero";
 import CalculatorCard from "@/components/CalculatorCard";
 import FeatureCard from "@/components/FeatureCard";
 import UserCard from "@/components/UserCard";
+
+export const metadata: Metadata = {
+  title: "BizTools | 無料ビジネス計算ツール",
+  description:
+    "利益計算、損益分岐点、ROI、価格設定、売上目標などを簡単に計算できる無料ビジネスツール。",
+};
 
 export default function Home() {
   return (
@@ -14,9 +21,9 @@ export default function Home() {
         padding: "0 24px 100px",
       }}
     >
-      <Hero lang="en" />
+      <Hero lang="ja" />
 
-      {/* Popular Business Tools */}
+      {/* 人気のビジネスツール */}
 
       <section
         style={{
@@ -31,7 +38,7 @@ export default function Home() {
             color: "#111827",
           }}
         >
-          Popular Business Tools
+          人気のビジネスツール
         </h2>
 
         <p
@@ -45,9 +52,8 @@ export default function Home() {
             fontSize: "18px",
           }}
         >
-          Professional calculators designed to help entrepreneurs,
-          freelancers and small business owners understand their
-          numbers and make smarter financial decisions.
+          起業家・フリーランス・中小企業経営者のために設計された
+          無料ビジネス計算ツールです。
         </p>
 
         <div
@@ -61,56 +67,59 @@ export default function Home() {
         >
           <CalculatorCard
             icon="📈"
-            title="Profit Calculator"
-            description="Calculate gross profit, net profit and profit margins."
-            bestFor={`• Small Business
-• Freelancers
-• Online Sellers`}
+            title="利益計算ツール"
+            description="利益・利益率・限界利益を簡単に計算できます。"
+            bestFor={`• 中小企業
+• フリーランス
+• ネットショップ`}
             href="/profit-calculator"
             popular
+            lang="ja"
           />
 
           <CalculatorCard
             icon="⚖️"
-            title="Break-even Calculator"
-            description="Know exactly how many sales you need before making a profit."
-            bestFor={`• Startups
-• Retail
-• Restaurants`}
+            title="損益分岐点計算ツール"
+            description="利益が出始める販売数量を計算します。"
+            bestFor={`• スタートアップ
+• 小売業
+• 飲食店`}
             href="/break-even-calculator"
+            lang="ja"
           />
 
           <CalculatorCard
             icon="🎯"
-            title="Sales Target Calculator"
-            description="Calculate the sales required to reach your profit goal."
-            bestFor={`• Business Planning
-• Forecasting`}
+            title="売上目標計算ツール"
+            description="目標利益に必要な売上を計算します。"
+            bestFor={`• 事業計画
+• 売上予測`}
             href="/sales-target-calculator"
+            lang="ja"
           />
 
           <CalculatorCard
             icon="💰"
-            title="Pricing Calculator"
-            description="Find the best selling price for your products."
-            bestFor={`• Products
-• Services
-• Ecommerce`}
+            title="価格設定ツール"
+            description="利益率から最適な販売価格を計算します。"
+            bestFor={`• 商品
+• サービス`}
             href="/pricing-calculator"
+            lang="ja"
           />
 
           <CalculatorCard
             icon="📊"
-            title="ROI Calculator"
-            description="Measure the return on your investment."
-            bestFor={`• Marketing
-• Equipment
-• Projects`}
+            title="ROI計算ツール"
+            description="投資利益率（ROI）を簡単に計算できます。"
+            bestFor={`• 投資
+• マーケティング`}
             href="/roi-calculator"
+            lang="ja"
           />
         </div>
       </section>
-           {/* Why BizTools */}
+            {/* BizToolsが選ばれる理由 */}
 
       <section
         style={{
@@ -125,7 +134,7 @@ export default function Home() {
             color: "#111827",
           }}
         >
-          Why BizTools?
+          BizToolsが選ばれる理由
         </h2>
 
         <div
@@ -139,38 +148,39 @@ export default function Home() {
         >
           <FeatureCard
             icon="⚡"
-            title="Fast & Simple"
-            description="Professional business calculations in seconds."
+            title="シンプルで高速"
+            description="ビジネスに必要な計算を数秒で実行できます。"
             href="/about"
-            lang="en"
+            lang="ja"
           />
 
           <FeatureCard
             icon="🎯"
-            title="Built for Business"
-            description="Created specifically for entrepreneurs, freelancers and small businesses."
+            title="ビジネス向け"
+            description="起業家・フリーランス・中小企業のために設計されています。"
             href="/about"
-            lang="en"
+            lang="ja"
           />
 
           <FeatureCard
             icon="📱"
-            title="Works Everywhere"
-            description="Fully responsive on desktop, tablet and mobile devices."
+            title="どこでも使える"
+            description="スマートフォン・タブレット・PCに対応しています。"
             href="/about"
-            lang="en"
+            lang="ja"
           />
 
           <FeatureCard
             icon="✅"
-            title="Always Free"
-            description="No registration. No subscription. No hidden fees."
+            title="完全無料"
+            description="登録不要・サブスク不要・すべて無料です。"
             href="/about"
-            lang="en"
+            lang="ja"
           />
         </div>
       </section>
-             {/* Who Uses BizTools? */}
+
+      {/* こんな方におすすめ */}
 
       <section
         style={{
@@ -185,7 +195,7 @@ export default function Home() {
             color: "#111827",
           }}
         >
-          Who Uses BizTools?
+          こんな方におすすめ
         </h2>
 
         <p
@@ -199,8 +209,7 @@ export default function Home() {
             fontSize: "18px",
           }}
         >
-          BizTools is designed for anyone who needs quick and reliable
-          business calculations.
+          BizToolsはビジネスに携わるすべての方のために作られています。
         </p>
 
         <div
@@ -214,26 +223,26 @@ export default function Home() {
         >
           <UserCard
             icon="🚀"
-            title="Entrepreneurs"
-            description="Plan your business with confidence using professional financial calculators."
+            title="起業家"
+            description="利益予測や事業計画を数字で確認できます。"
           />
 
           <UserCard
             icon="💼"
-            title="Freelancers"
-            description="Price your services correctly and understand your real profit."
+            title="フリーランス"
+            description="適切な価格設定や利益率を簡単に計算できます。"
           />
 
           <UserCard
             icon="🏪"
-            title="Small Business"
-            description="Monitor profitability, sales targets and business performance."
+            title="中小企業"
+            description="利益・売上・損益分岐点をすばやく分析できます。"
           />
 
           <UserCard
             icon="🎓"
-            title="Students"
-            description="Learn important business concepts using practical calculators."
+            title="学生"
+            description="ビジネスや会計を実践的に学べます。"
           />
         </div>
       </section>
@@ -256,7 +265,7 @@ export default function Home() {
             margin: 0,
           }}
         >
-          Ready to Make Better Business Decisions?
+          ビジネスの数字をもっと簡単に
         </h2>
 
         <p
@@ -269,8 +278,8 @@ export default function Home() {
             marginInline: "auto",
           }}
         >
-          Start using our free business calculators today and make
-          smarter financial decisions with confidence.
+          無料のビジネス計算ツールで、
+          利益・価格・ROI・売上目標をすばやく計算しましょう。
         </p>
 
         <div
@@ -294,7 +303,7 @@ export default function Home() {
               fontSize: "17px",
             }}
           >
-            Browse Business Tools →
+            計算ツール一覧 →
           </Link>
 
           <Link
@@ -309,11 +318,12 @@ export default function Home() {
               fontSize: "17px",
             }}
           >
-            Try Profit Calculator
+            利益計算ツールを試す
           </Link>
         </div>
       </section>
-            {/* FAQ */}
+
+      {/* よくある質問 */}
 
       <section
         style={{
@@ -328,7 +338,7 @@ export default function Home() {
             color: "#111827",
           }}
         >
-          Frequently Asked Questions
+          よくある質問
         </h2>
 
         <div
@@ -353,7 +363,7 @@ export default function Home() {
                 color: "#111827",
               }}
             >
-              Are these calculators free?
+              本当に無料ですか？
             </h3>
 
             <p
@@ -363,8 +373,7 @@ export default function Home() {
                 lineHeight: 1.8,
               }}
             >
-              Yes. Every calculator on BizTools is completely free to
-              use. No registration or subscription is required.
+              はい。BizToolsのすべてのビジネス計算ツールは無料でご利用いただけます。
             </p>
           </div>
 
@@ -383,7 +392,7 @@ export default function Home() {
                 color: "#111827",
               }}
             >
-              Who are these calculators for?
+              会員登録は必要ですか？
             </h3>
 
             <p
@@ -393,13 +402,10 @@ export default function Home() {
                 lineHeight: 1.8,
               }}
             >
-              BizTools is designed for entrepreneurs, freelancers,
-              startups, online sellers, students and anyone who wants
-              to better understand business numbers.
+              いいえ。登録不要ですぐにご利用いただけます。
             </p>
           </div>
-
-          <div
+                    <div
             style={{
               background: "#FFFFFF",
               border: "1px solid #E5E7EB",
@@ -414,7 +420,7 @@ export default function Home() {
                 color: "#111827",
               }}
             >
-              Do I need to create an account?
+              どんな人におすすめですか？
             </h3>
 
             <p
@@ -424,12 +430,12 @@ export default function Home() {
                 lineHeight: 1.8,
               }}
             >
-              No. All calculators work instantly in your browser. We do
-              not require user accounts.
+              起業家、フリーランス、中小企業経営者、ネットショップ運営者、
+              学生など、ビジネスの数字を素早く確認したいすべての方におすすめです。
             </p>
           </div>
         </div>
       </section>
-          </main>
+    </main>
   );
 }

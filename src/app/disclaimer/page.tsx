@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Disclaimer | BizTools",
+  title: "免責事項 | BizTools",
   description:
-    "Read the BizTools disclaimer regarding the use of our calculators and business information.",
+    "BizToolsの免責事項です。本サイトおよび計算ツールのご利用について説明しています。",
 };
 
-export default function DisclaimerPage() {
+export default function DisclaimerPageJa() {
   return (
     <main
       style={{
@@ -23,7 +23,7 @@ export default function DisclaimerPage() {
           lineHeight: 1.15,
         }}
       >
-        Disclaimer
+        免責事項
       </h1>
 
       <p
@@ -34,12 +34,17 @@ export default function DisclaimerPage() {
           lineHeight: 1.9,
         }}
       >
-        Last updated: June 2026
+        最終更新日：2026年6月
       </p>
 
       <section style={{ marginTop: "60px" }}>
-        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
-          General Information
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          一般的な情報について
         </h2>
 
         <p
@@ -49,14 +54,20 @@ export default function DisclaimerPage() {
             lineHeight: 1.9,
           }}
         >
-          BizTools provides free business calculators and educational
-          information for general informational purposes only.
+          BizToolsでは、無料のビジネス計算ツールおよび情報を提供しています。
+          本サイトの内容は一般的な情報提供を目的としており、
+          特定の状況に対する助言を行うものではありません。
         </p>
       </section>
 
       <section style={{ marginTop: "50px" }}>
-        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
-          No Professional Advice
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          専門的なアドバイスではありません
         </h2>
 
         <p
@@ -66,16 +77,20 @@ export default function DisclaimerPage() {
             lineHeight: 1.9,
           }}
         >
-          The information provided on this website should not be considered
-          financial, legal, accounting, tax, or investment advice.
-          Always consult a qualified professional before making important
-          business or financial decisions.
+          本サイトの情報は、会計・税務・法律・投資・経営に関する
+          専門的なアドバイスではありません。
+          重要な判断を行う際は、専門家へご相談ください。
         </p>
       </section>
 
       <section style={{ marginTop: "50px" }}>
-        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
-          Calculator Accuracy
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          計算結果について
         </h2>
 
         <p
@@ -85,15 +100,20 @@ export default function DisclaimerPage() {
             lineHeight: 1.9,
           }}
         >
-          Although we strive to ensure our calculators produce accurate
-          results, we do not guarantee that all calculations are free from
-          errors or suitable for every business situation.
+          計算ツールは正確な結果を提供できるよう努めていますが、
+          計算結果の完全性・正確性・適用性を保証するものではありません。
+          必ずご自身でも内容をご確認ください。
         </p>
       </section>
 
       <section style={{ marginTop: "50px" }}>
-        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
-          Limitation of Liability
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          責任の制限
         </h2>
 
         <p
@@ -103,15 +123,21 @@ export default function DisclaimerPage() {
             lineHeight: 1.9,
           }}
         >
-          BizTools shall not be liable for any loss, damages, or business
-          decisions resulting from the use of this website or its
-          calculators.
+          本サイトの情報または計算ツールを利用したことによって生じた
+          いかなる損害・損失・逸失利益についても、
+          BizToolsは責任を負いません。
+          最終的な判断は利用者ご自身の責任でお願いいたします。
         </p>
       </section>
 
       <section style={{ marginTop: "50px" }}>
-        <h2 style={{ fontSize: "30px", fontWeight: 700 }}>
-          External Links
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+          }}
+        >
+          外部リンクについて
         </h2>
 
         <p
@@ -121,9 +147,9 @@ export default function DisclaimerPage() {
             lineHeight: 1.9,
           }}
         >
-          This website may contain links to third-party websites. We are not
-          responsible for the content, accuracy, or privacy practices of
-          those websites.
+          当サイトには外部サイトへのリンクが含まれる場合があります。
+          リンク先の内容やサービスについて、
+          BizToolsは責任を負いません。
         </p>
       </section>
     </main>

@@ -4,12 +4,12 @@ import ROICalculator from "../../roi-calculator/ROICalculator";
 import ROIGuide from "../../roi-calculator/ROIGuide";
 
 export const metadata: Metadata = {
-  title: "ROI計算ツール | BizTools",
+  title: "ROI Calculator | BizTools",
   description:
-    "ROI（投資利益率）、純利益、投資収益を簡単に計算できる無料ツール。起業家、投資家、フリーランス、中小企業向け。",
+    "Calculate Return on Investment (ROI), net profit, total return and investment performance. Free calculator for entrepreneurs, freelancers, investors and small businesses.",
 };
 
-export default function ROICalculatorPageJa() {
+export default function ROICalculatorPage() {
   return (
     <main
       style={{
@@ -24,11 +24,10 @@ export default function ROICalculatorPageJa() {
             fontSize: "54px",
             fontWeight: 800,
             color: "#111827",
-            lineHeight: 1.25,
-            paddingTop: "6px",
+            lineHeight: 1.15,
           }}
         >
-          ROI計算ツール
+          ROI Calculator
         </h1>
 
         <p
@@ -40,15 +39,15 @@ export default function ROICalculatorPageJa() {
             maxWidth: "760px",
           }}
         >
-          ROI（投資利益率）、純利益、投資収益を数秒で計算できます。
-          起業家、投資家、フリーランス、中小企業経営者向けの
-          無料ビジネス計算ツールです。
+          Calculate Return on Investment (ROI), net profit and total return in
+          seconds. Perfect for entrepreneurs, investors, freelancers and small
+          business owners.
         </p>
       </section>
 
-      <ROICalculator lang="ja" />
+      <ROICalculator />
 
-      <ROIGuide lang="ja" />
+      <ROIGuide />
     </main>
   );
 }

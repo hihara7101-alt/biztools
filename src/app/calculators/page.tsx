@@ -3,52 +3,52 @@ import CalculatorCard from "@/components/CalculatorCard";
 const calculators = [
   {
     icon: "📈",
-    title: "Profit Calculator",
+    title: "利益計算ツール",
     description:
-      "Understand profit, margin and contribution margin.",
+      "利益、利益率、限界利益を簡単に計算できます。",
     bestFor:
-      "✓ Small Business\n✓ Freelancers\n✓ Online Sellers",
+      "✓ 中小企業\n✓ フリーランス\n✓ ネットショップ",
     href: "/profit-calculator",
     popular: true,
   },
 
   {
     icon: "⚖️",
-    title: "Break-even Calculator",
+    title: "損益分岐点計算ツール",
     description:
-      "Find out exactly when your business becomes profitable.",
+      "利益が出始める売上・販売数を計算します。",
     bestFor:
-      "✓ Startups\n✓ Retail\n✓ Restaurants",
+      "✓ スタートアップ\n✓ 小売業\n✓ 飲食店",
     href: "/break-even-calculator",
   },
 
   {
     icon: "🎯",
-    title: "Sales Target Calculator",
+    title: "売上目標計算ツール",
     description:
-      "Calculate the sales required to reach your profit goal.",
+      "目標利益を達成するために必要な売上を計算します。",
     bestFor:
-      "✓ Business Planning\n✓ Forecasting",
+      "✓ 事業計画\n✓ 売上予測",
     href: "/sales-target-calculator",
   },
 
   {
     icon: "💰",
-    title: "Pricing Calculator",
+    title: "価格設定ツール",
     description:
-      "Set the right selling price using your target margin.",
+      "希望利益率から最適な販売価格を計算します。",
     bestFor:
-      "✓ Products\n✓ Services\n✓ Ecommerce",
+      "✓ 商品販売\n✓ サービス業\n✓ ECサイト",
     href: "/pricing-calculator",
   },
 
   {
     icon: "📊",
-    title: "ROI Calculator",
+    title: "ROI計算ツール",
     description:
-      "Measure the return on your investments.",
+      "投資利益率（ROI）を簡単に計算できます。",
     bestFor:
-      "✓ Marketing\n✓ Equipment\n✓ Projects",
+      "✓ マーケティング\n✓ 設備投資\n✓ プロジェクト",
     href: "/roi-calculator",
   },
 ];
@@ -66,9 +66,10 @@ export default function CalculatorsPage() {
         style={{
           fontSize: "44px",
           fontWeight: 700,
+          color: "#111827",
         }}
       >
-        Business Tools
+        ビジネス計算ツール
       </h1>
 
       <p
@@ -76,13 +77,14 @@ export default function CalculatorsPage() {
           marginTop: "20px",
           fontSize: "18px",
           color: "#6B7280",
-          lineHeight: "1.8",
+          lineHeight: 1.8,
           maxWidth: "720px",
         }}
       >
-        Professional business tools designed to help entrepreneurs,
-        freelancers and small business owners make smarter financial
-        decisions.
+        起業家、フリーランス、中小企業経営者のための
+        無料ビジネス計算ツールです。
+        利益、価格設定、損益分岐点、ROI、売上目標などを
+        すばやく正確に計算できます。
       </p>
 
       <div
@@ -103,6 +105,7 @@ export default function CalculatorsPage() {
             bestFor={calculator.bestFor}
             href={calculator.href}
             popular={calculator.popular}
+            lang="ja"
           />
         ))}
       </div>
@@ -123,34 +126,32 @@ export default function CalculatorsPage() {
             color: "#111827",
           }}
         >
-          Why BizTools?
+          BizToolsとは？
         </h2>
 
         <p
           style={{
             marginTop: "22px",
             color: "#6B7280",
-            lineHeight: "1.9",
+            lineHeight: 1.9,
             fontSize: "17px",
           }}
         >
-          Every successful business starts with understanding the
-          numbers. BizTools provides professional business tools that
-          help you calculate profit, pricing, break-even points, return
-          on investment, and sales targets quickly and accurately.
+          ビジネスを成功させるためには、数字を正しく理解することが重要です。
+          BizToolsでは、利益計算、価格設定、損益分岐点、ROI、
+          売上目標などを簡単に計算できる無料ツールを提供しています。
         </p>
 
         <p
           style={{
             marginTop: "20px",
             color: "#6B7280",
-            lineHeight: "1.9",
+            lineHeight: 1.9,
             fontSize: "17px",
           }}
         >
-          Whether you're starting a new business, managing an online
-          store, or planning future growth, BizTools helps you make
-          smarter business decisions with confidence.
+          新しく事業を始める方から、既にビジネスを運営している方まで、
+          より良い経営判断ができるようサポートします。
         </p>
       </section>
     </main>

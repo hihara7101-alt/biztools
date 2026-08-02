@@ -4,50 +4,34 @@ import ProfitCalculator from "./ProfitCalculator";
 import ProfitGuide from "./ProfitGuide";
 
 export const metadata: Metadata = {
-  title: "Profit Calculator | BizTools",
-
+  title: "利益計算ツール",
   description:
-    "Free Profit Calculator for entrepreneurs and small businesses. Calculate profit, gross margin, net margin, contribution margin and profitability instantly.",
-
-  keywords: [
-    "profit calculator",
-    "gross profit calculator",
-    "net profit calculator",
-    "profit margin calculator",
-    "business profit calculator",
-    "contribution margin calculator",
-    "small business calculator",
-  ],
+    "利益、粗利益、利益率、粗利益率を簡単に計算できる無料ツール。個人事業主、中小企業、フリーランス、ネットショップ運営者向け。",
 
   alternates: {
-    canonical: "https://biztools.site/profit-calculator",
-
+    canonical: "/profit-calculator",
     languages: {
-      en: "https://biztools.site/profit-calculator",
-      ja: "https://biztools.site/ja/profit-calculator",
+      "ja-JP": "/profit-calculator",
+      "en-US": "/en/profit-calculator",
+      "x-default": "/profit-calculator",
     },
   },
 
   openGraph: {
-    title: "Profit Calculator | BizTools",
-
+    title: "利益計算ツール | BizTools",
     description:
-      "Calculate profit, gross margin, net margin and contribution margin instantly.",
-
-    url: "https://biztools.site/profit-calculator",
-
+      "利益、粗利益、利益率、粗利益率を簡単に計算できる無料ビジネスツール。",
+    url: "/profit-calculator",
     siteName: "BizTools",
-
+    locale: "ja_JP",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-
-    title: "Profit Calculator | BizTools",
-
+    title: "利益計算ツール | BizTools",
     description:
-      "Free business profit calculator for entrepreneurs and small businesses.",
+      "利益、粗利益、利益率、粗利益率を簡単に計算できる無料ビジネスツール。",
   },
 };
 
@@ -57,7 +41,7 @@ export default function ProfitCalculatorPage() {
       style={{
         maxWidth: 1000,
         margin: "0 auto",
-        padding: "50px 24px 80px",
+        padding: "70px 24px",
       }}
     >
       <section>
@@ -66,10 +50,11 @@ export default function ProfitCalculatorPage() {
             fontSize: "54px",
             fontWeight: 800,
             color: "#111827",
-            lineHeight: 1.15,
+            lineHeight: 1.25,
+            paddingTop: "6px",
           }}
         >
-          Profit Calculator
+          利益計算ツール
         </h1>
 
         <p
@@ -81,15 +66,15 @@ export default function ProfitCalculatorPage() {
             maxWidth: "760px",
           }}
         >
-          Calculate profit, gross margin, net margin, and contribution margin
-          in seconds. Built for entrepreneurs, freelancers, online sellers,
-          and small business owners.
+          利益、粗利益、利益率、粗利益率を数秒で計算できます。
+          起業家、個人事業主、フリーランス、中小企業、
+          ネットショップ運営者のための無料ビジネス計算ツールです。
         </p>
       </section>
 
-      <ProfitCalculator />
+      <ProfitCalculator lang="ja" />
 
-      <ProfitGuide />
+      <ProfitGuide lang="ja" />
     </main>
   );
 }

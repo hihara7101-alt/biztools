@@ -6,13 +6,22 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const pathname = usePathname();
 
-  const isJapanese = pathname.startsWith("/ja");
+  const isEnglish =
+    pathname === "/en" || pathname.startsWith("/en/");
 
-  const englishPath = pathname.replace(/^\/ja/, "") || "/";
+  const saveLanguage = (language: "ja" | "en") => {
+    document.cookie = `biztools-language=${language}; path=/; max-age=31536000; samesite=lax`;
+  };
 
-  const japanesePath = isJapanese
+  const japanesePath = isEnglish
+    ? pathname.replace(/^\/en/, "") || "/"
+    : pathname;
+
+  const englishPath = isEnglish
     ? pathname
-    : `/ja${pathname === "/" ? "" : pathname}`;
+    : pathname === "/"
+      ? "/en"
+      : `/en${pathname}`;
 
   return (
     <header
@@ -35,7 +44,7 @@ export default function Header() {
         }}
       >
         <Link
-          href={isJapanese ? "/ja" : "/"}
+          href={isEnglish ? "/en" : "/"}
           style={{
             textDecoration: "none",
             color: "#111827",
@@ -54,33 +63,43 @@ export default function Header() {
           }}
         >
           <Link
-            href={isJapanese ? "/ja" : "/"}
+            href={isEnglish ? "/en" : "/"}
             style={{
               textDecoration: "none",
               color: "#374151",
             }}
           >
-            {isJapanese ? "ホーム" : "Home"}
+            {isEnglish ? "Home" : "ホーム"}
           </Link>
 
           <Link
-            href={isJapanese ? "/ja/about" : "/about"}
+            href={isEnglish ? "/en/calculators" : "/calculators"}
             style={{
               textDecoration: "none",
               color: "#374151",
             }}
           >
-            {isJapanese ? "BizToolsについて" : "About"}
+            {isEnglish ? "Calculators" : "計算ツール"}
           </Link>
 
           <Link
-            href={isJapanese ? "/ja/contact" : "/contact"}
+            href={isEnglish ? "/en/about" : "/about"}
             style={{
               textDecoration: "none",
               color: "#374151",
             }}
           >
-            {isJapanese ? "お問い合わせ" : "Contact"}
+            {isEnglish ? "About" : "BizToolsについて"}
+          </Link>
+
+          <Link
+            href={isEnglish ? "/en/contact" : "/contact"}
+            style={{
+              textDecoration: "none",
+              color: "#374151",
+            }}
+          >
+            {isEnglish ? "Contact" : "お問い合わせ"}
           </Link>
 
           <div
@@ -93,10 +112,11 @@ export default function Header() {
 
           <Link
             href={englishPath}
+            onClick={() => saveLanguage("en")}
             style={{
               textDecoration: "none",
-              fontWeight: isJapanese ? 500 : 700,
-              color: isJapanese ? "#6B7280" : "#2563EB",
+              fontWeight: isEnglish ? 700 : 500,
+              color: isEnglish ? "#2563EB" : "#6B7280",
             }}
           >
             English
@@ -104,10 +124,11 @@ export default function Header() {
 
           <Link
             href={japanesePath}
+            onClick={() => saveLanguage("ja")}
             style={{
               textDecoration: "none",
-              fontWeight: isJapanese ? 700 : 500,
-              color: isJapanese ? "#2563EB" : "#6B7280",
+              fontWeight: isEnglish ? 500 : 700,
+              color: isEnglish ? "#6B7280" : "#2563EB",
             }}
           >
             日本語
