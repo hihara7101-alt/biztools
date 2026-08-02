@@ -7,18 +7,18 @@ type SEOProps = {
   lang?: "en" | "ja";
 };
 
-const SITE_URL = "https://biztools.site";
+const SITE_URL = "https://www.uttacca.com";
 
 export function createMetadata({
   title,
   description,
   path,
-  lang = "en",
+  lang = "ja",
 }: SEOProps): Metadata {
   const canonical =
     lang === "ja"
-      ? `${SITE_URL}/ja${path}`
-      : `${SITE_URL}${path}`;
+      ? `${SITE_URL}${path}`
+      : `${SITE_URL}/en${path}`;
 
   return {
     title,
@@ -28,8 +28,9 @@ export function createMetadata({
       canonical,
 
       languages: {
-        en: `${SITE_URL}${path}`,
-        ja: `${SITE_URL}/ja${path}`,
+        "ja-JP": `${SITE_URL}${path}`,
+        "en-US": `${SITE_URL}/en${path}`,
+        "x-default": `${SITE_URL}${path}`,
       },
     },
 

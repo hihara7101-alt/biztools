@@ -20,11 +20,12 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://biztools.site/profit-calculator",
+    canonical: "https://www.uttacca.com/en/profit-calculator",
 
     languages: {
-      en: "https://biztools.site/profit-calculator",
-      ja: "https://biztools.site/ja/profit-calculator",
+      "en-US": "https://www.uttacca.com/en/profit-calculator",
+      "ja-JP": "https://www.uttacca.com/profit-calculator",
+      "x-default": "https://www.uttacca.com/profit-calculator",
     },
   },
 
@@ -34,9 +35,11 @@ export const metadata: Metadata = {
     description:
       "Calculate profit, gross margin, net margin and contribution margin instantly.",
 
-    url: "https://biztools.site/profit-calculator",
+    url: "https://www.uttacca.com/en/profit-calculator",
 
     siteName: "BizTools",
+
+    locale: "en_US",
 
     type: "website",
   },

@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://biztools.site"), // Change this after purchasing your domain
+  metadataBase: new URL("https://www.uttacca.com"),
 
   title: {
     default: "BizTools | Free Business Calculators",
@@ -42,11 +42,11 @@ export const metadata: Metadata = {
     description:
       "Free business calculators for entrepreneurs, freelancers and small business owners.",
 
-    url: "https://biztools.site",
+    url: "https://www.uttacca.com",
 
     siteName: "BizTools",
 
-    locale: "en_US",
+    locale: "ja_JP",
 
     type: "website",
   },
@@ -77,21 +77,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
-  style={{
-    margin: 0,
-    background: "#F9FAFB",
-    color: "#111827",
-    fontFamily:
-      "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    WebkitFontSmoothing: "antialiased",
-    MozOsxFontSmoothing: "grayscale",
-  }}
->
-  <StructuredData />
+        style={{
+          margin: 0,
+          background: "#F9FAFB",
+          color: "#111827",
+          fontFamily:
+            "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+        }}
+      >
+        <StructuredData />
 
-  <Header />
+        <Header />
 
         <main
           style={{
