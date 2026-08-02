@@ -4,13 +4,14 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.uttacca.com"),
+  metadataBase: new URL("https://uttacca.com"),
 
   title: {
-    default: "BizTools | Free Business Calculators",
-    template: "%s | BizTools",
+    default: "Uttacca | Free Business Calculators",
+    template: "%s | Uttacca",
   },
 
   description:
@@ -30,21 +31,21 @@ export const metadata: Metadata = {
 
   authors: [
     {
-      name: "BizTools",
+      name: "Uttacca",
     },
   ],
 
-  creator: "BizTools",
+  creator: "Uttacca",
 
   openGraph: {
-    title: "BizTools | Free Business Calculators",
+    title: "Uttacca | Free Business Calculators",
 
     description:
       "Free business calculators for entrepreneurs, freelancers and small business owners.",
 
-    url: "https://www.uttacca.com",
+    url: "https://uttacca.com",
 
-    siteName: "BizTools",
+    siteName: "Uttacca",
 
     locale: "ja_JP",
 
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "BizTools | Free Business Calculators",
+    title: "Uttacca | Free Business Calculators",
 
     description:
       "Free business calculators for entrepreneurs, freelancers and small business owners.",
@@ -89,6 +90,8 @@ export default function RootLayout({
           MozOsxFontSmoothing: "grayscale",
         }}
       >
+        <GoogleAnalytics />
+
         <StructuredData />
 
         <Header />
