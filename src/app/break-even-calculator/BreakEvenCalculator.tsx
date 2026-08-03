@@ -46,13 +46,13 @@ export default function BreakEvenCalculator({
     lang === "ja" ? "¥" : "$";
 
   const [sellingPrice, setSellingPrice] =
-    useState<number | "">(100);
+    useState<number | "">("");
 
   const [variableCost, setVariableCost] =
-    useState<number | "">(45);
+    useState<number | "">("");
 
   const [fixedCosts, setFixedCosts] =
-    useState<number | "">(12000);
+    useState<number | "">("");
 
   const sellingPriceRef =
     useRef<HTMLInputElement>(null);
@@ -63,16 +63,21 @@ export default function BreakEvenCalculator({
   const fixedCostsRef =
     useRef<HTMLInputElement>(null);
 
+  const price =
+    sellingPrice === "" ? 0 : sellingPrice;
+
+  const variable =
+    variableCost === "" ? 0 : variableCost;
+
+  const fixed =
+    fixedCosts === "" ? 0 : fixedCosts;
+
+  const hasInput =
+    sellingPrice !== "" ||
+    variableCost !== "" ||
+    fixedCosts !== "";
+
   const calculations = useMemo(() => {
-    const price =
-      sellingPrice === "" ? 0 : sellingPrice;
-
-    const variable =
-      variableCost === "" ? 0 : variableCost;
-
-    const fixed =
-      fixedCosts === "" ? 0 : fixedCosts;
-
     const contributionPerUnit =
       price - variable;
 
@@ -144,55 +149,216 @@ export default function BreakEvenCalculator({
       safetyRevenue20,
       safetyRevenue30,
     };
-  }, [
-    sellingPrice,
-    variableCost,
-    fixedCosts,
-  ]);
+  }, [price, variable, fixed]);
 
-  const notPossible =
+  const text =
     lang === "ja"
-      ? "計算できません"
-      : "Not possible";
+      ? {
+          title: "損益分岐点を計算",
+
+          description:
+            "販売価格、変動費、固定費を入力すると、黒字化に必要な販売数と売上高を計算できます。",
+
+          inputTitle: "数値を入力",
+
+          sellingPrice:
+            "販売価格（1個あたり）",
+
+          sellingPricePlaceholder:
+            "販売価格を入力",
+
+          variableCost:
+            "変動費（1個あたり）",
+
+          variableCostPlaceholder:
+            "変動費を入力",
+
+          fixedCosts: "固定費合計",
+
+          fixedCostsPlaceholder:
+            "固定費を入力",
+
+          reset: "リセット",
+
+          readyTitle:
+            "計算を始めましょう",
+
+          readyDescription:
+            "販売価格、変動費、固定費を入力すると、損益分岐点をすぐに確認できます。",
+
+          notPossible:
+            "計算できません",
+
+          breakEvenUnits:
+            "損益分岐販売数",
+
+          exactCalculation:
+            "正確な計算値",
+
+          breakEvenRevenue:
+            "損益分岐売上高",
+
+          revenueDescription:
+            "この売上高を超えると利益が発生します。",
+
+          keyMetrics: "主要指標",
+
+          contributionPerUnit:
+            "限界利益（1個あたり）",
+
+          contributionMargin:
+            "限界利益率",
+
+          variableCostRatio:
+            "変動費率",
+
+          profitByVolume:
+            "販売数量別の利益",
+
+          units100: "100個販売",
+
+          units250: "250個販売",
+
+          units500: "500個販売",
+
+          safetyMarginRevenue:
+            "安全余裕売上",
+
+          safetyDescription:
+            "損益分岐点を上回る売上目標の目安です。",
+
+          above10: "10%上",
+
+          above20: "20%上",
+
+          above30: "30%上",
+        }
+      : {
+          title:
+            "Calculate Your Break-even Point",
+
+          description:
+            "Enter your selling price, variable cost, and fixed costs to calculate the sales volume and revenue required to become profitable.",
+
+          inputTitle:
+            "Enter Your Numbers",
+
+          sellingPrice:
+            "Selling Price per Unit",
+
+          sellingPricePlaceholder:
+            "Enter selling price",
+
+          variableCost:
+            "Variable Cost per Unit",
+
+          variableCostPlaceholder:
+            "Enter variable cost",
+
+          fixedCosts:
+            "Total Fixed Costs",
+
+          fixedCostsPlaceholder:
+            "Enter fixed costs",
+
+          reset:
+            "Reset Calculator",
+
+          readyTitle:
+            "Ready to calculate?",
+
+          readyDescription:
+            "Enter your selling price, variable cost, and fixed costs to calculate your break-even point.",
+
+          notPossible:
+            "Not possible",
+
+          breakEvenUnits:
+            "Break-even Units",
+
+          exactCalculation:
+            "Exact calculation",
+
+          breakEvenRevenue:
+            "Break-even Revenue",
+
+          revenueDescription:
+            "Revenue above this amount begins generating profit.",
+
+          keyMetrics:
+            "Key Metrics",
+
+          contributionPerUnit:
+            "Contribution per Unit",
+
+          contributionMargin:
+            "Contribution Margin",
+
+          variableCostRatio:
+            "Variable Cost Ratio",
+
+          profitByVolume:
+            "Profit by Sales Volume",
+
+          units100:
+            "100 Units Sold",
+
+          units250:
+            "250 Units Sold",
+
+          units500:
+            "500 Units Sold",
+
+          safetyMarginRevenue:
+            "Safety Margin Revenue",
+
+          safetyDescription:
+            "Use these figures as practical revenue targets above your break-even point.",
+
+          above10:
+            "10% Above Break-even",
+
+          above20:
+            "20% Above Break-even",
+
+          above30:
+            "30% Above Break-even",
+        };
 
   return (
-    <CalculatorContainer>
-      <div
-        style={{
-          marginBottom: "32px",
-        }}
-      >
-        <h2
+    <>
+      <CalculatorContainer>
+        <div
           style={{
-            margin: 0,
-            fontSize: "30px",
-            fontWeight: 800,
-            lineHeight: 1.3,
-            color: "#111827",
+            marginBottom: "32px",
           }}
         >
-          {lang === "ja"
-            ? "損益分岐点を計算"
-            : "Calculate Your Break-even Point"}
-        </h2>
+          <h2
+            style={{
+              margin: 0,
+              fontSize: "30px",
+              fontWeight: 800,
+              lineHeight: 1.3,
+              color: "#111827",
+            }}
+          >
+            {text.title}
+          </h2>
 
-        <p
-          style={{
-            marginTop: "12px",
-            marginBottom: 0,
-            maxWidth: "760px",
-            fontSize: "17px",
-            lineHeight: 1.7,
-            color: "#4B5563",
-          }}
-        >
-          {lang === "ja"
-            ? "販売価格、変動費、固定費を入力すると、黒字化に必要な販売数と売上高を計算できます。"
-            : "Enter your selling price, variable cost, and fixed costs to calculate the sales volume and revenue required to become profitable."}
-        </p>
-      </div>
-
-      <section
+          <p
+            style={{
+              marginTop: "12px",
+              marginBottom: 0,
+              maxWidth: "760px",
+              fontSize: "17px",
+              lineHeight: 1.7,
+              color: "#4B5563",
+            }}
+          >
+            {text.description}
+          </p>
+        </div>
+             <section
         style={{
           padding: "28px",
           border: "1px solid #E5E7EB",
@@ -209,9 +375,7 @@ export default function BreakEvenCalculator({
             color: "#111827",
           }}
         >
-          {lang === "ja"
-            ? "数値を入力"
-            : "Enter Your Numbers"}
+          {text.inputTitle}
         </h3>
 
         <div
@@ -222,459 +386,465 @@ export default function BreakEvenCalculator({
             gap: "20px",
           }}
         >
-                    <NumberInput
-            label={
-              lang === "ja"
-                ? "販売価格（1個あたり）"
-                : "Selling Price per Unit"
+          <NumberInput
+            label={text.sellingPrice}
+            placeholder={
+              text.sellingPricePlaceholder
             }
-            placeholder="100"
             value={sellingPrice}
-            onChange={setSellingPrice}
+            onChange={(value) =>
+              setSellingPrice(
+                value === ""
+                  ? ""
+                  : Math.max(0, value)
+              )
+            }
             inputRef={sellingPriceRef}
             nextRef={variableCostRef}
           />
 
           <NumberInput
-            label={
-              lang === "ja"
-                ? "変動費（1個あたり）"
-                : "Variable Cost per Unit"
+            label={text.variableCost}
+            placeholder={
+              text.variableCostPlaceholder
             }
-            placeholder="45"
             value={variableCost}
-            onChange={setVariableCost}
+            onChange={(value) =>
+              setVariableCost(
+                value === ""
+                  ? ""
+                  : Math.max(0, value)
+              )
+            }
             inputRef={variableCostRef}
             nextRef={fixedCostsRef}
           />
 
           <NumberInput
-            label={
-              lang === "ja"
-                ? "固定費合計"
-                : "Total Fixed Costs"
+            label={text.fixedCosts}
+            placeholder={
+              text.fixedCostsPlaceholder
             }
-            placeholder="12000"
             value={fixedCosts}
-            onChange={setFixedCosts}
+            onChange={(value) =>
+              setFixedCosts(
+                value === ""
+                  ? ""
+                  : Math.max(0, value)
+              )
+            }
             inputRef={fixedCostsRef}
           />
         </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: "24px",
+          }}
+        >
+          <button
+            onClick={() => {
+              setSellingPrice("");
+              setVariableCost("");
+              setFixedCosts("");
+
+              sellingPriceRef.current?.focus();
+            }}
+            style={{
+              background: "#2563EB",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: "12px",
+              padding: "14px 28px",
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
+          >
+            {text.reset}
+          </button>
+        </div>
       </section>
 
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "20px",
-          marginTop: "28px",
-        }}
-      >
+      {!hasInput && (
         <div
           style={{
-            minHeight: "170px",
-            padding: "28px",
-            border: "2px solid #2563EB",
+            marginTop: "40px",
+            padding: "50px",
             borderRadius: "20px",
-            background:
-              "linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%)",
-            boxShadow:
-              "0 10px 30px rgba(37, 99, 235, 0.10)",
+            background: "#F9FAFB",
+            border: "1px solid #E5E7EB",
+            textAlign: "center",
           }}
         >
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              color: "#1D4ED8",
-              fontSize: "15px",
-              fontWeight: 800,
+              fontSize: "48px",
             }}
           >
-            <span aria-hidden="true">🎯</span>
-
-            <span>
-              {lang === "ja"
-                ? "損益分岐販売数"
-                : "Break-even Units"}
-            </span>
+            📊
           </div>
 
-          <div
+          <h3
             style={{
-              marginTop: "18px",
-              fontSize: "38px",
-              fontWeight: 900,
-              lineHeight: 1.1,
+              marginTop: "20px",
+              fontSize: "26px",
+              fontWeight: 700,
               color: "#111827",
             }}
           >
-            {Number.isFinite(
-              calculations.roundedBreakEvenUnits
-            )
-              ? formatNumber(
-                  calculations.roundedBreakEvenUnits,
-                  lang,
-                  0
-                )
-              : notPossible}
-          </div>
-
-          {Number.isFinite(
-            calculations.breakEvenUnits
-          ) && (
-            <p
-              style={{
-                marginTop: "12px",
-                marginBottom: 0,
-                fontSize: "14px",
-                lineHeight: 1.6,
-                color: "#4B5563",
-              }}
-            >
-              {lang === "ja"
-                ? `正確な計算値: ${formatNumber(
-                    calculations.breakEvenUnits,
-                    lang,
-                    2
-                  )}個`
-                : `Exact calculation: ${formatNumber(
-                    calculations.breakEvenUnits,
-                    lang,
-                    2
-                  )} units`}
-            </p>
-          )}
-        </div>
-
-        <div
-          style={{
-            minHeight: "170px",
-            padding: "28px",
-            border: "2px solid #059669",
-            borderRadius: "20px",
-            background:
-              "linear-gradient(135deg, #ECFDF5 0%, #FFFFFF 100%)",
-            boxShadow:
-              "0 10px 30px rgba(5, 150, 105, 0.10)",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              color: "#047857",
-              fontSize: "15px",
-              fontWeight: 800,
-            }}
-          >
-            <span aria-hidden="true">💰</span>
-
-            <span>
-              {lang === "ja"
-                ? "損益分岐売上高"
-                : "Break-even Revenue"}
-            </span>
-          </div>
-
-          <div
-            style={{
-              marginTop: "18px",
-              fontSize: "38px",
-              fontWeight: 900,
-              lineHeight: 1.1,
-              color: "#111827",
-            }}
-          >
-            {Number.isFinite(
-              calculations.breakEvenRevenue
-            ) ? (
-              <MoneyValue
-                value={
-                  calculations.breakEvenRevenue
-                }
-                currency={currency}
-              />
-            ) : (
-              notPossible
-            )}
-          </div>
+            {text.readyTitle}
+          </h3>
 
           <p
             style={{
-              marginTop: "12px",
-              marginBottom: 0,
-              fontSize: "14px",
-              lineHeight: 1.6,
-              color: "#4B5563",
+              marginTop: "14px",
+              color: "#6B7280",
+              lineHeight: 1.8,
+              maxWidth: "600px",
+              marginInline: "auto",
             }}
           >
-            {lang === "ja"
-              ? "この売上高を超えると利益が発生します。"
-              : "Revenue above this amount begins generating profit."}
+            {text.readyDescription}
           </p>
         </div>
-      </section>
+      )}
 
-      <section
-        style={{
-          marginTop: "28px",
-        }}
-      >
-        <h3
-          style={{
-            marginTop: 0,
-            marginBottom: "18px",
-            fontSize: "20px",
-            fontWeight: 800,
-            color: "#111827",
-          }}
-        >
-          {lang === "ja"
-            ? "主要指標"
-            : "Key Metrics"}
-        </h3>
+      {hasInput && (
+        <>
+          <section
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "20px",
+              marginTop: "28px",
+            }}
+          >
+            <div
+              style={{
+                minHeight: "170px",
+                padding: "28px",
+                border: "2px solid #2563EB",
+                borderRadius: "20px",
+                background:
+                  "linear-gradient(135deg,#EFF6FF 0%,#FFFFFF 100%)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: 800,
+                  color: "#1D4ED8",
+                }}
+              >
+                🎯 {text.breakEvenUnits}
+              </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(210px, 1fr))",
-            gap: "20px",
-          }}
-        >
-          <ResultCard
-            title={
-              lang === "ja"
-                ? "限界利益（1個あたり）"
-                : "Contribution per Unit"
-            }
-            value={
-              <MoneyValue
+              <div
+                style={{
+                  marginTop: "18px",
+                  fontSize: "38px",
+                  fontWeight: 900,
+                }}
+              >
+                {Number.isFinite(
+                  calculations.roundedBreakEvenUnits
+                )
+                  ? formatNumber(
+                      calculations.roundedBreakEvenUnits,
+                      lang,
+                      0
+                    )
+                  : text.notPossible}
+              </div>
+
+              {Number.isFinite(
+                calculations.breakEvenUnits
+              ) && (
+                <p
+                  style={{
+                    marginTop: "12px",
+                    color: "#4B5563",
+                  }}
+                >
+                  {text.exactCalculation}:{" "}
+                  {formatNumber(
+                    calculations.breakEvenUnits,
+                    lang
+                  )}
+                </p>
+              )}
+            </div>
+
+            <div
+              style={{
+                minHeight: "170px",
+                padding: "28px",
+                border: "2px solid #059669",
+                borderRadius: "20px",
+                background:
+                  "linear-gradient(135deg,#ECFDF5 0%,#FFFFFF 100%)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: 800,
+                  color: "#047857",
+                }}
+              >
+                💰 {text.breakEvenRevenue}
+              </div>
+
+              <div
+                style={{
+                  marginTop: "18px",
+                  fontSize: "38px",
+                  fontWeight: 900,
+                }}
+              >
+                {Number.isFinite(
+                  calculations.breakEvenRevenue
+                ) ? (
+                  <MoneyValue
+                    value={
+                      calculations.breakEvenRevenue
+                    }
+                    currency={currency}
+                  />
+                ) : (
+                  text.notPossible
+                )}
+              </div>
+
+              <p
+                style={{
+                  marginTop: "12px",
+                  color: "#4B5563",
+                }}
+              >
+                {text.revenueDescription}
+              </p>
+            </div>
+          </section>
+                    <section
+            style={{
+              marginTop: "28px",
+            }}
+          >
+            <h3
+              style={{
+                marginTop: 0,
+                marginBottom: "18px",
+                fontSize: "20px",
+                fontWeight: 800,
+                color: "#111827",
+              }}
+            >
+              {text.keyMetrics}
+            </h3>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(210px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              <ResultCard
+                title={text.contributionPerUnit}
                 value={
-                  calculations.contributionPerUnit
+                  <MoneyValue
+                    value={
+                      calculations.contributionPerUnit
+                    }
+                    currency={currency}
+                  />
                 }
-                currency={currency}
               />
-            }
-          />
 
-          <ResultCard
-            title={
-              lang === "ja"
-                ? "限界利益率"
-                : "Contribution Margin"
-            }
-            value={formatPercent(
-              calculations.contributionMarginRatio *
-                100,
-              lang
-            )}
-          />
+              <ResultCard
+                title={text.contributionMargin}
+                value={formatPercent(
+                  calculations.contributionMarginRatio *
+                    100,
+                  lang
+                )}
+              />
 
-          <ResultCard
-            title={
-              lang === "ja"
-                ? "変動費率"
-                : "Variable Cost Ratio"
-            }
-            value={formatPercent(
-              calculations.variableCostRatio * 100,
-              lang
-            )}
-          />
-        </div>
-      </section>
-            <section
-        style={{
-          marginTop: "28px",
-          padding: "28px",
-          border: "1px solid #E5E7EB",
-          borderRadius: "18px",
-          background: "#FFFFFF",
-        }}
-      >
-        <h3
-          style={{
-            marginTop: 0,
-            marginBottom: "20px",
-            fontSize: "20px",
-            fontWeight: 800,
-            color: "#111827",
-          }}
-        >
-          {lang === "ja"
-            ? "販売数量別の利益"
-            : "Profit by Sales Volume"}
-        </h3>
+              <ResultCard
+                title={text.variableCostRatio}
+                value={formatPercent(
+                  calculations.variableCostRatio * 100,
+                  lang
+                )}
+              />
+            </div>
+          </section>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "20px",
-          }}
-        >
-          <InsightCard
-            title={
-              lang === "ja"
-                ? "100個販売"
-                : "100 Units Sold"
-            }
-            message={`${symbol}${formatNumber(
-              calculations.profitAt100Units,
-              lang
-            )}`}
-            color="#2563EB"
-            icon="📊"
-          />
+          <section
+            style={{
+              marginTop: "28px",
+              padding: "28px",
+              border: "1px solid #E5E7EB",
+              borderRadius: "18px",
+              background: "#FFFFFF",
+            }}
+          >
+            <h3
+              style={{
+                marginTop: 0,
+                marginBottom: "20px",
+                fontSize: "20px",
+                fontWeight: 800,
+                color: "#111827",
+              }}
+            >
+              {text.profitByVolume}
+            </h3>
 
-          <InsightCard
-            title={
-              lang === "ja"
-                ? "250個販売"
-                : "250 Units Sold"
-            }
-            message={`${symbol}${formatNumber(
-              calculations.profitAt250Units,
-              lang
-            )}`}
-            color="#059669"
-            icon="📈"
-          />
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              <InsightCard
+                title={text.units100}
+                message={`${symbol}${formatNumber(
+                  calculations.profitAt100Units,
+                  lang
+                )}`}
+                color="#2563EB"
+                icon="📊"
+              />
 
-          <InsightCard
-            title={
-              lang === "ja"
-                ? "500個販売"
-                : "500 Units Sold"
-            }
-            message={`${symbol}${formatNumber(
-              calculations.profitAt500Units,
-              lang
-            )}`}
-            color="#7C3AED"
-            icon="🚀"
-          />
-        </div>
-      </section>
+              <InsightCard
+                title={text.units250}
+                message={`${symbol}${formatNumber(
+                  calculations.profitAt250Units,
+                  lang
+                )}`}
+                color="#059669"
+                icon="📈"
+              />
 
-      <section
-        style={{
-          marginTop: "28px",
-          padding: "28px",
-          border: "1px solid #E5E7EB",
-          borderRadius: "18px",
-          background: "#FFFFFF",
-        }}
-      >
-        <h3
-          style={{
-            marginTop: 0,
-            marginBottom: "20px",
-            fontSize: "20px",
-            fontWeight: 800,
-            color: "#111827",
-          }}
-        >
-          {lang === "ja"
-            ? "安全余裕売上"
-            : "Safety Margin Revenue"}
-        </h3>
+              <InsightCard
+                title={text.units500}
+                message={`${symbol}${formatNumber(
+                  calculations.profitAt500Units,
+                  lang
+                )}`}
+                color="#7C3AED"
+                icon="🚀"
+              />
+            </div>
+          </section>
 
-        <p
-          style={{
-            marginTop: 0,
-            marginBottom: "20px",
-            fontSize: "15px",
-            lineHeight: 1.7,
-            color: "#6B7280",
-          }}
-        >
-          {lang === "ja"
-            ? "損益分岐点を上回る売上目標の目安です。"
-            : "Use these figures as practical revenue targets above your break-even point."}
-        </p>
+          <section
+            style={{
+              marginTop: "28px",
+              padding: "28px",
+              border: "1px solid #E5E7EB",
+              borderRadius: "18px",
+              background: "#FFFFFF",
+            }}
+          >
+            <h3
+              style={{
+                marginTop: 0,
+                marginBottom: "20px",
+                fontSize: "20px",
+                fontWeight: 800,
+                color: "#111827",
+              }}
+            >
+              {text.safetyMarginRevenue}
+            </h3>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "20px",
-          }}
-        >
-          <ResultCard
-            title={
-              lang === "ja"
-                ? "10%上"
-                : "10% Above Break-even"
-            }
-            value={
-              Number.isFinite(
-                calculations.safetyRevenue10
-              ) ? (
-                <MoneyValue
-                  value={
+            <p
+              style={{
+                marginTop: 0,
+                marginBottom: "20px",
+                fontSize: "15px",
+                lineHeight: 1.7,
+                color: "#6B7280",
+              }}
+            >
+              {text.safetyDescription}
+            </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              <ResultCard
+                title={text.above10}
+                value={
+                  Number.isFinite(
                     calculations.safetyRevenue10
-                  }
-                  currency={currency}
-                />
-              ) : (
-                notPossible
-              )
-            }
-          />
+                  ) ? (
+                    <MoneyValue
+                      value={
+                        calculations.safetyRevenue10
+                      }
+                      currency={currency}
+                    />
+                  ) : (
+                    text.notPossible
+                  )
+                }
+              />
 
-          <ResultCard
-            title={
-              lang === "ja"
-                ? "20%上"
-                : "20% Above Break-even"
-            }
-            value={
-              Number.isFinite(
-                calculations.safetyRevenue20
-              ) ? (
-                <MoneyValue
-                  value={
+              <ResultCard
+                title={text.above20}
+                value={
+                  Number.isFinite(
                     calculations.safetyRevenue20
-                  }
-                  currency={currency}
-                />
-              ) : (
-                notPossible
-              )
-            }
-          />
+                  ) ? (
+                    <MoneyValue
+                      value={
+                        calculations.safetyRevenue20
+                      }
+                      currency={currency}
+                    />
+                  ) : (
+                    text.notPossible
+                  )
+                }
+              />
 
-          <ResultCard
-            title={
-              lang === "ja"
-                ? "30%上"
-                : "30% Above Break-even"
-            }
-            value={
-              Number.isFinite(
-                calculations.safetyRevenue30
-              ) ? (
-                <MoneyValue
-                  value={
+              <ResultCard
+                title={text.above30}
+                value={
+                  Number.isFinite(
                     calculations.safetyRevenue30
-                  }
-                  currency={currency}
-                />
-              ) : (
-                notPossible
-              )
-            }
-          />
-        </div>
-      </section>
-          </CalculatorContainer>
+                  ) ? (
+                    <MoneyValue
+                      value={
+                        calculations.safetyRevenue30
+                      }
+                      currency={currency}
+                    />
+                  ) : (
+                    text.notPossible
+                  )
+                }
+              />
+            </div>
+          </section>
+        </>
+      )}
+      </CalculatorContainer>
+    </>
   );
-}
+} 
