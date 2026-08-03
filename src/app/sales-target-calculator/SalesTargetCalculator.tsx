@@ -9,6 +9,8 @@ import MoneyValue from "@/components/MoneyValue";
 import CalculatorContainer from "@/components/CalculatorContainer";
 import SectionTitle from "@/components/SectionTitle";
 
+import type { Currency } from "@/lib/currency";
+
 type Props = {
   lang?: "en" | "ja";
 };
@@ -16,33 +18,61 @@ type Props = {
 export default function SalesTargetCalculator({
   lang = "en",
 }: Props) {
-  const [targetProfit, setTargetProfit] = useState<number | "">("");
-  const [sellingPrice, setSellingPrice] = useState<number | "">("");
-  const [variableCost, setVariableCost] = useState<number | "">("");
-  const [fixedCosts, setFixedCosts] = useState<number | "">("");
+  const currency: Currency =
+    lang === "ja" ? "JPY" : "USD";
 
-  const targetRef = useRef<HTMLInputElement>(null);
-  const priceRef = useRef<HTMLInputElement>(null);
-  const variableRef = useRef<HTMLInputElement>(null);
-  const fixedRef = useRef<HTMLInputElement>(null);
+  const [targetProfit, setTargetProfit] =
+    useState<number | "">("");
 
-  const targetValue = Number(targetProfit) || 0;
-  const priceValue = Number(sellingPrice) || 0;
-  const variableValue = Number(variableCost) || 0;
-  const fixedValue = Number(fixedCosts) || 0;
+  const [sellingPrice, setSellingPrice] =
+    useState<number | "">("");
 
-  const contributionMargin = priceValue - variableValue;
+  const [variableCost, setVariableCost] =
+    useState<number | "">("");
+
+  const [fixedCosts, setFixedCosts] =
+    useState<number | "">("");
+
+  const targetRef =
+    useRef<HTMLInputElement>(null);
+
+  const priceRef =
+    useRef<HTMLInputElement>(null);
+
+  const variableRef =
+    useRef<HTMLInputElement>(null);
+
+  const fixedRef =
+    useRef<HTMLInputElement>(null);
+
+  const targetValue =
+    Number(targetProfit) || 0;
+
+  const priceValue =
+    Number(sellingPrice) || 0;
+
+  const variableValue =
+    Number(variableCost) || 0;
+
+  const fixedValue =
+    Number(fixedCosts) || 0;
+
+  const contributionMargin =
+    priceValue - variableValue;
 
   const unitsNeeded =
     contributionMargin > 0
-      ? (targetValue + fixedValue) / contributionMargin
+      ? (targetValue + fixedValue) /
+        contributionMargin
       : 0;
 
-  const requiredRevenue = unitsNeeded * priceValue;
+  const requiredRevenue =
+    unitsNeeded * priceValue;
 
   const contributionRatio =
     priceValue > 0
-      ? (contributionMargin / priceValue) * 100
+      ? (contributionMargin / priceValue) *
+        100
       : 0;
 
   const hasInput =
@@ -61,23 +91,28 @@ export default function SalesTargetCalculator({
 
           target: "目標利益",
 
-          targetPlaceholder: "目標利益を入力",
+          targetPlaceholder:
+            "目標利益を入力",
 
           price: "販売価格",
 
-          pricePlaceholder: "販売価格を入力",
+          pricePlaceholder:
+            "販売価格を入力",
 
           variable: "変動費",
 
-          variablePlaceholder: "変動費を入力",
+          variablePlaceholder:
+            "変動費を入力",
 
           fixed: "固定費",
 
-          fixedPlaceholder: "固定費を入力",
+          fixedPlaceholder:
+            "固定費を入力",
 
           reset: "リセット",
 
-          ready: "売上目標を計算しましょう",
+          ready:
+            "売上目標を計算しましょう",
 
           readyDescription:
             "利益目標を達成するために必要な販売数と売上高を計算します。",
@@ -89,47 +124,65 @@ export default function SalesTargetCalculator({
           contribution: "限界利益",
 
           ratio: "限界利益率",
-                  }
+        }
       : {
-          sectionTitle: "Business Numbers",
+          sectionTitle:
+            "Business Numbers",
 
           sectionSubtitle:
             "Enter your target profit, selling price, variable cost and fixed costs.",
 
-          target: "Target Profit",
+          target:
+            "Target Profit",
 
-          targetPlaceholder: "Enter target profit",
+          targetPlaceholder:
+            "Enter target profit",
 
-          price: "Selling Price per Unit",
+          price:
+            "Selling Price per Unit",
 
-          pricePlaceholder: "Enter selling price",
+          pricePlaceholder:
+            "Enter selling price",
 
-          variable: "Variable Cost per Unit",
+          variable:
+            "Variable Cost per Unit",
 
-          variablePlaceholder: "Enter variable cost",
+          variablePlaceholder:
+            "Enter variable cost",
 
-          fixed: "Fixed Costs",
+          fixed:
+            "Fixed Costs",
 
-          fixedPlaceholder: "Enter fixed costs",
+          fixedPlaceholder:
+            "Enter fixed costs",
 
-          reset: "Reset Calculator",
+          reset:
+            "Reset Calculator",
 
-          ready: "Ready to calculate?",
+          ready:
+            "Ready to calculate?",
 
           readyDescription:
             "Enter your business numbers above to calculate how many sales you need to reach your target profit.",
 
-          units: "Units Required",
+          units:
+            "Units Required",
 
-          revenue: "Required Revenue",
+          revenue:
+            "Required Revenue",
 
-          contribution: "Contribution Margin",
+          contribution:
+            "Contribution Margin",
 
-          ratio: "Contribution Margin Ratio",
+          ratio:
+            "Contribution Margin Ratio",
         };
 
   const insight = useMemo(() => {
-    if (priceValue <= variableValue && hasInput) {
+    if (
+      priceValue <= variableValue &&
+      hasInput
+    ) {
       return {
         title:
           lang === "ja"
@@ -193,12 +246,15 @@ export default function SalesTargetCalculator({
     variableValue,
     unitsNeeded,
   ]);
-   return (
+
+  return (
     <>
       <CalculatorContainer>
         <SectionTitle
           title={text.sectionTitle}
-          subtitle={text.sectionSubtitle}
+          subtitle={
+            text.sectionSubtitle
+          }
         />
 
         <div
@@ -209,11 +265,18 @@ export default function SalesTargetCalculator({
         >
           <NumberInput
             label={text.target}
-            placeholder={text.targetPlaceholder}
+            placeholder={
+              text.targetPlaceholder
+            }
             value={targetProfit}
             onChange={(value) =>
               setTargetProfit(
-                value === "" ? "" : Math.max(0, value)
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
               )
             }
             inputRef={targetRef}
@@ -222,11 +285,18 @@ export default function SalesTargetCalculator({
 
           <NumberInput
             label={text.price}
-            placeholder={text.pricePlaceholder}
+            placeholder={
+              text.pricePlaceholder
+            }
             value={sellingPrice}
             onChange={(value) =>
               setSellingPrice(
-                value === "" ? "" : Math.max(0, value)
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
               )
             }
             inputRef={priceRef}
@@ -235,11 +305,18 @@ export default function SalesTargetCalculator({
 
           <NumberInput
             label={text.variable}
-            placeholder={text.variablePlaceholder}
+            placeholder={
+              text.variablePlaceholder
+            }
             value={variableCost}
             onChange={(value) =>
               setVariableCost(
-                value === "" ? "" : Math.max(0, value)
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
               )
             }
             inputRef={variableRef}
@@ -248,11 +325,18 @@ export default function SalesTargetCalculator({
 
           <NumberInput
             label={text.fixed}
-            placeholder={text.fixedPlaceholder}
+            placeholder={
+              text.fixedPlaceholder
+            }
             value={fixedCosts}
             onChange={(value) =>
               setFixedCosts(
-                value === "" ? "" : Math.max(0, value)
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
               )
             }
             inputRef={fixedRef}
@@ -261,7 +345,8 @@ export default function SalesTargetCalculator({
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent:
+                "flex-end",
               marginTop: "8px",
             }}
           >
@@ -271,14 +356,18 @@ export default function SalesTargetCalculator({
                 setSellingPrice("");
                 setVariableCost("");
                 setFixedCosts("");
+
                 targetRef.current?.focus();
               }}
               style={{
-                background: "#2563EB",
+                background:
+                  "#2563EB",
                 color: "#FFFFFF",
                 border: "none",
-                borderRadius: "12px",
-                padding: "14px 28px",
+                borderRadius:
+                  "12px",
+                padding:
+                  "14px 28px",
                 fontWeight: 700,
                 cursor: "pointer",
               }}
@@ -288,14 +377,18 @@ export default function SalesTargetCalculator({
           </div>
         </div>
       </CalculatorContainer>
-            {!hasInput && (
+
+      {!hasInput && (
         <div
           style={{
             marginTop: "40px",
             padding: "50px",
-            borderRadius: "20px",
-            background: "#F9FAFB",
-            border: "1px solid #E5E7EB",
+            borderRadius:
+              "20px",
+            background:
+              "#F9FAFB",
+            border:
+              "1px solid #E5E7EB",
             textAlign: "center",
           }}
         >
@@ -338,29 +431,53 @@ export default function SalesTargetCalculator({
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(240px,1fr))",
+                "repeat(auto-fit, minmax(240px, 1fr))",
               gap: "20px",
               marginTop: "40px",
             }}
           >
             <ResultCard
               title={text.units}
-              value={unitsNeeded.toFixed(1)}
+              value={unitsNeeded.toFixed(
+                1
+              )}
             />
 
             <ResultCard
               title={text.revenue}
-              value={<MoneyValue value={requiredRevenue} />}
+              value={
+                <MoneyValue
+                  value={
+                    requiredRevenue
+                  }
+                  currency={
+                    currency
+                  }
+                />
+              }
             />
 
             <ResultCard
-              title={text.contribution}
-              value={<MoneyValue value={contributionMargin} />}
+              title={
+                text.contribution
+              }
+              value={
+                <MoneyValue
+                  value={
+                    contributionMargin
+                  }
+                  currency={
+                    currency
+                  }
+                />
+              }
             />
 
             <ResultCard
               title={text.ratio}
-              value={`${contributionRatio.toFixed(1)}%`}
+              value={`${contributionRatio.toFixed(
+                1
+              )}%`}
             />
           </div>
 
@@ -369,10 +486,12 @@ export default function SalesTargetCalculator({
               marginTop: "30px",
             }}
           >
-            <InsightCard {...insight} />
+            <InsightCard
+              {...insight}
+            />
           </div>
         </>
       )}
-           </>
+    </>
   );
 }

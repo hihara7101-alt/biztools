@@ -9,6 +9,8 @@ import MoneyValue from "@/components/MoneyValue";
 import CalculatorContainer from "@/components/CalculatorContainer";
 import SectionTitle from "@/components/SectionTitle";
 
+import type { Currency } from "@/lib/currency";
+
 type Props = {
   lang?: "en" | "ja";
 };
@@ -16,33 +18,54 @@ type Props = {
 export default function PricingCalculator({
   lang = "en",
 }: Props) {
-  const [cost, setCost] = useState<number | "">("");
-  const [margin, setMargin] = useState<number | "">("");
-  const [tax, setTax] = useState<number | "">("");
+  const currency: Currency =
+    lang === "ja" ? "JPY" : "USD";
 
-  const costRef = useRef<HTMLInputElement>(null);
-  const marginRef = useRef<HTMLInputElement>(null);
-  const taxRef = useRef<HTMLInputElement>(null);
+  const [cost, setCost] =
+    useState<number | "">("");
 
-  const costValue = Number(cost) || 0;
-  const marginValue = Number(margin) || 0;
-  const taxValue = Number(tax) || 0;
+  const [margin, setMargin] =
+    useState<number | "">("");
+
+  const [tax, setTax] =
+    useState<number | "">("");
+
+  const costRef =
+    useRef<HTMLInputElement>(null);
+
+  const marginRef =
+    useRef<HTMLInputElement>(null);
+
+  const taxRef =
+    useRef<HTMLInputElement>(null);
+
+  const costValue =
+    Number(cost) || 0;
+
+  const marginValue =
+    Number(margin) || 0;
+
+  const taxValue =
+    Number(tax) || 0;
 
   const sellingPrice =
     marginValue >= 100
       ? 0
-      : costValue / (1 - marginValue / 100);
+      : costValue /
+        (1 - marginValue / 100);
 
   const profitPerUnit =
     sellingPrice - costValue;
 
   const markup =
     costValue > 0
-      ? (profitPerUnit / costValue) * 100
+      ? (profitPerUnit / costValue) *
+        100
       : 0;
 
   const priceWithTax =
-    sellingPrice * (1 + taxValue / 100);
+    sellingPrice *
+    (1 + taxValue / 100);
 
   const hasInput =
     cost !== "" ||
@@ -52,117 +75,150 @@ export default function PricingCalculator({
   const text =
     lang === "ja"
       ? {
-          sectionTitle: "価格設定情報",
+          sectionTitle:
+            "価格設定情報",
 
           sectionSubtitle:
             "原価・利益率・税率を入力してください。",
 
           cost: "原価",
 
-          costPlaceholder: "原価を入力",
+          costPlaceholder:
+            "原価を入力",
 
-          margin: "希望利益率 (%)",
+          margin:
+            "希望利益率 (%)",
 
-          marginPlaceholder: "利益率を入力",
+          marginPlaceholder:
+            "利益率を入力",
 
           tax: "消費税 (%)",
 
-          taxPlaceholder: "税率を入力",
+          taxPlaceholder:
+            "税率を入力",
 
           reset: "リセット",
 
-          ready: "販売価格を計算しましょう",
+          ready:
+            "販売価格を計算しましょう",
 
           readyDescription:
             "原価と利益率を入力すると最適な販売価格を計算できます。",
 
-          sellingPrice: "販売価格",
+          sellingPrice:
+            "販売価格",
 
           profit: "利益",
 
-          markup: "原価利益率",
+          markup:
+            "原価利益率",
 
-          taxPrice: "税込価格",
+          taxPrice:
+            "税込価格",
 
-          excellentTitle: "十分な利益があります",
+          excellentTitle:
+            "十分な利益があります",
 
           excellentMessage:
             "利益率が高く、健全な価格設定です。",
 
-          healthyTitle: "適切な価格設定",
+          healthyTitle:
+            "適切な価格設定",
 
           healthyMessage:
             "一般的な利益率です。",
 
-          lowTitle: "利益率が低めです",
+          lowTitle:
+            "利益率が低めです",
 
           lowMessage:
             "価格設定を見直すことで利益改善が期待できます。",
         }
       : {
-          sectionTitle: "Pricing Information",
+          sectionTitle:
+            "Pricing Information",
 
           sectionSubtitle:
             "Enter your product cost, desired margin and tax rate.",
 
-          cost: "Cost per Unit",
+          cost:
+            "Cost per Unit",
 
-          costPlaceholder: "Enter cost",
+          costPlaceholder:
+            "Enter cost",
 
-          margin: "Desired Margin (%)",
+          margin:
+            "Desired Margin (%)",
 
-          marginPlaceholder: "Enter margin",
+          marginPlaceholder:
+            "Enter margin",
 
-          tax: "Sales Tax (%)",
+          tax:
+            "Sales Tax (%)",
 
-          taxPlaceholder: "Enter tax",
+          taxPlaceholder:
+            "Enter tax",
 
-          reset: "Reset Calculator",
+          reset:
+            "Reset Calculator",
 
-          ready: "Ready to calculate?",
+          ready:
+            "Ready to calculate?",
 
           readyDescription:
             "Enter your product cost and desired margin to calculate your ideal selling price.",
 
-          sellingPrice: "Selling Price",
+          sellingPrice:
+            "Selling Price",
 
-          profit: "Profit per Unit",
+          profit:
+            "Profit per Unit",
 
-          markup: "Markup",
+          markup:
+            "Markup",
 
-          taxPrice: "Price Including Tax",
+          taxPrice:
+            "Price Including Tax",
 
-          excellentTitle: "Excellent Pricing",
+          excellentTitle:
+            "Excellent Pricing",
 
           excellentMessage:
             "Your pricing provides a healthy profit margin.",
 
-          healthyTitle: "Good Pricing",
+          healthyTitle:
+            "Good Pricing",
 
           healthyMessage:
             "Your pricing appears balanced.",
 
-          lowTitle: "Low Profit Margin",
+          lowTitle:
+            "Low Profit Margin",
 
           lowMessage:
             "Consider increasing your price or lowering costs.",
         };
-          const insight = useMemo(() => {
+
+  const insight = useMemo(() => {
     if (marginValue >= 40) {
       return {
-        title: text.excellentTitle,
+        title:
+          text.excellentTitle,
         icon: "🟢",
         color: "#16A34A",
-        message: text.excellentMessage,
+        message:
+          text.excellentMessage,
       };
     }
 
     if (marginValue >= 20) {
       return {
-        title: text.healthyTitle,
+        title:
+          text.healthyTitle,
         icon: "🔵",
         color: "#2563EB",
-        message: text.healthyMessage,
+        message:
+          text.healthyMessage,
       };
     }
 
@@ -179,7 +235,9 @@ export default function PricingCalculator({
       <CalculatorContainer>
         <SectionTitle
           title={text.sectionTitle}
-          subtitle={text.sectionSubtitle}
+          subtitle={
+            text.sectionSubtitle
+          }
         />
 
         <div
@@ -190,10 +248,19 @@ export default function PricingCalculator({
         >
           <NumberInput
             label={text.cost}
-            placeholder={text.costPlaceholder}
+            placeholder={
+              text.costPlaceholder
+            }
             value={cost}
             onChange={(value) =>
-              setCost(value === "" ? "" : Math.max(0, value))
+              setCost(
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
+              )
             }
             inputRef={costRef}
             nextRef={marginRef}
@@ -201,10 +268,19 @@ export default function PricingCalculator({
 
           <NumberInput
             label={text.margin}
-            placeholder={text.marginPlaceholder}
+            placeholder={
+              text.marginPlaceholder
+            }
             value={margin}
             onChange={(value) =>
-              setMargin(value === "" ? "" : Math.max(0, value))
+              setMargin(
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
+              )
             }
             inputRef={marginRef}
             nextRef={taxRef}
@@ -212,10 +288,19 @@ export default function PricingCalculator({
 
           <NumberInput
             label={text.tax}
-            placeholder={text.taxPlaceholder}
+            placeholder={
+              text.taxPlaceholder
+            }
             value={tax}
             onChange={(value) =>
-              setTax(value === "" ? "" : Math.max(0, value))
+              setTax(
+                value === ""
+                  ? ""
+                  : Math.max(
+                      0,
+                      value
+                    )
+              )
             }
             inputRef={taxRef}
           />
@@ -223,7 +308,8 @@ export default function PricingCalculator({
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent:
+                "flex-end",
               marginTop: "8px",
             }}
           >
@@ -232,14 +318,18 @@ export default function PricingCalculator({
                 setCost("");
                 setMargin("");
                 setTax("");
+
                 costRef.current?.focus();
               }}
               style={{
-                background: "#2563EB",
+                background:
+                  "#2563EB",
                 color: "#FFFFFF",
                 border: "none",
-                borderRadius: "12px",
-                padding: "14px 28px",
+                borderRadius:
+                  "12px",
+                padding:
+                  "14px 28px",
                 fontWeight: 700,
                 cursor: "pointer",
               }}
@@ -255,9 +345,12 @@ export default function PricingCalculator({
           style={{
             marginTop: "40px",
             padding: "50px",
-            borderRadius: "20px",
-            background: "#F9FAFB",
-            border: "1px solid #E5E7EB",
+            borderRadius:
+              "20px",
+            background:
+              "#F9FAFB",
+            border:
+              "1px solid #E5E7EB",
             textAlign: "center",
           }}
         >
@@ -293,35 +386,67 @@ export default function PricingCalculator({
           </p>
         </div>
       )}
-            {hasInput && (
+
+      {hasInput && (
         <>
           <div
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(240px,1fr))",
+                "repeat(auto-fit, minmax(240px, 1fr))",
               gap: "20px",
               marginTop: "40px",
             }}
           >
             <ResultCard
-              title={text.sellingPrice}
-              value={<MoneyValue value={sellingPrice} />}
+              title={
+                text.sellingPrice
+              }
+              value={
+                <MoneyValue
+                  value={
+                    sellingPrice
+                  }
+                  currency={
+                    currency
+                  }
+                />
+              }
             />
 
             <ResultCard
               title={text.profit}
-              value={<MoneyValue value={profitPerUnit} />}
+              value={
+                <MoneyValue
+                  value={
+                    profitPerUnit
+                  }
+                  currency={
+                    currency
+                  }
+                />
+              }
             />
 
             <ResultCard
               title={text.markup}
-              value={`${markup.toFixed(1)}%`}
+              value={`${markup.toFixed(
+                1
+              )}%`}
             />
 
             <ResultCard
               title={text.taxPrice}
-              value={<MoneyValue value={priceWithTax} />}
+              value={
+                <MoneyValue
+                  value={
+                    priceWithTax
+                  }
+                  currency={
+                    currency
+                  }
+                />
+              }
             />
           </div>
 
@@ -330,7 +455,9 @@ export default function PricingCalculator({
               marginTop: "30px",
             }}
           >
-            <InsightCard {...insight} />
+            <InsightCard
+              {...insight}
+            />
           </div>
         </>
       )}

@@ -90,9 +90,9 @@ export default function ProfitCalculatorPage() {
         </p>
       </section>
 
-      <ProfitCalculator />
+      <ProfitCalculator lang="en" />
 
-      <ProfitGuide />
+      <ProfitGuide lang="en" />
     </main>
   );
 }

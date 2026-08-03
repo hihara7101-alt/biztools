@@ -69,7 +69,7 @@ export default function BreakEvenCalculatorPage() {
       </section>
 
 
-      <BreakEvenCalculator />
+      <BreakEvenCalculator lang="en" />
 
 
       <section

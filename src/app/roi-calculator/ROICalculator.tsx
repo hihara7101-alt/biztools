@@ -9,6 +9,8 @@ import MoneyValue from "@/components/MoneyValue";
 import CalculatorContainer from "@/components/CalculatorContainer";
 import SectionTitle from "@/components/SectionTitle";
 
+import type { Currency } from "@/lib/currency";
+
 type Props = {
   lang?: "en" | "ja";
 };
@@ -16,21 +18,41 @@ type Props = {
 export default function ROICalculator({
   lang = "en",
 }: Props) {
-  const [investment, setInvestment] = useState<number | "">("");
-  const [returnAmount, setReturnAmount] = useState<number | "">("");
-  const [additionalCosts, setAdditionalCosts] = useState<number | "">("");
+  const currency: Currency =
+    lang === "ja" ? "JPY" : "USD";
 
-  const investmentRef = useRef<HTMLInputElement>(null);
-  const returnRef = useRef<HTMLInputElement>(null);
-  const additionalRef = useRef<HTMLInputElement>(null);
+  const [investment, setInvestment] =
+    useState<number | "">("");
 
-  const investmentValue = Number(investment) || 0;
-  const returnValue = Number(returnAmount) || 0;
-  const additionalValue = Number(additionalCosts) || 0;
+  const [returnAmount, setReturnAmount] =
+    useState<number | "">("");
 
-  const totalInvestment = investmentValue + additionalValue;
+  const [additionalCosts, setAdditionalCosts] =
+    useState<number | "">("");
 
-  const netProfit = returnValue - totalInvestment;
+  const investmentRef =
+    useRef<HTMLInputElement>(null);
+
+  const returnRef =
+    useRef<HTMLInputElement>(null);
+
+  const additionalRef =
+    useRef<HTMLInputElement>(null);
+
+  const investmentValue =
+    Number(investment) || 0;
+
+  const returnValue =
+    Number(returnAmount) || 0;
+
+  const additionalValue =
+    Number(additionalCosts) || 0;
+
+  const totalInvestment =
+    investmentValue + additionalValue;
+
+  const netProfit =
+    returnValue - totalInvestment;
 
   const roi =
     totalInvestment > 0
@@ -86,42 +108,52 @@ export default function ROICalculator({
           multiple: "投資倍率",
         }
       : {
-          sectionTitle: "Investment Information",
+          sectionTitle:
+            "Investment Information",
 
           sectionSubtitle:
             "Enter your investment, return and additional costs.",
 
-          investment: "Initial Investment",
+          investment:
+            "Initial Investment",
 
           investmentPlaceholder:
             "Enter investment",
 
-          returnAmount: "Return Amount",
+          returnAmount:
+            "Return Amount",
 
           returnPlaceholder:
             "Enter return amount",
 
-          additionalCosts: "Additional Costs",
+          additionalCosts:
+            "Additional Costs",
 
           additionalPlaceholder:
             "Enter additional costs",
 
-          reset: "Reset Calculator",
+          reset:
+            "Reset Calculator",
 
-          ready: "Ready to calculate ROI?",
+          ready:
+            "Ready to calculate ROI?",
 
           readyDescription:
             "Enter your investment and return above to instantly calculate ROI, profit and investment performance.",
 
           roi: "ROI",
 
-          netProfit: "Net Profit",
+          netProfit:
+            "Net Profit",
 
-          totalInvestment: "Total Investment",
+          totalInvestment:
+            "Total Investment",
 
-          multiple: "Investment Multiple",
+          multiple:
+            "Investment Multiple",
         };
-          const insight = useMemo(() => {
+
+  const insight = useMemo(() => {
     if (netProfit < 0 && hasInput) {
       return {
         title:
@@ -194,7 +226,12 @@ export default function ROICalculator({
           ? "利益率が低いため、投資内容を見直すことをおすすめします。"
           : "The return is low compared to your investment. Consider reviewing this investment.",
     };
-  }, [roi, netProfit, hasInput, lang]);
+  }, [
+    roi,
+    netProfit,
+    hasInput,
+    lang,
+  ]);
 
   return (
     <>
@@ -212,10 +249,16 @@ export default function ROICalculator({
         >
           <NumberInput
             label={text.investment}
-            placeholder={text.investmentPlaceholder}
+            placeholder={
+              text.investmentPlaceholder
+            }
             value={investment}
             onChange={(value) =>
-              setInvestment(value === "" ? "" : Math.max(0, value))
+              setInvestment(
+                value === ""
+                  ? ""
+                  : Math.max(0, value)
+              )
             }
             inputRef={investmentRef}
             nextRef={returnRef}
@@ -223,10 +266,16 @@ export default function ROICalculator({
 
           <NumberInput
             label={text.returnAmount}
-            placeholder={text.returnPlaceholder}
+            placeholder={
+              text.returnPlaceholder
+            }
             value={returnAmount}
             onChange={(value) =>
-              setReturnAmount(value === "" ? "" : Math.max(0, value))
+              setReturnAmount(
+                value === ""
+                  ? ""
+                  : Math.max(0, value)
+              )
             }
             inputRef={returnRef}
             nextRef={additionalRef}
@@ -234,14 +283,21 @@ export default function ROICalculator({
 
           <NumberInput
             label={text.additionalCosts}
-            placeholder={text.additionalPlaceholder}
+            placeholder={
+              text.additionalPlaceholder
+            }
             value={additionalCosts}
             onChange={(value) =>
-              setAdditionalCosts(value === "" ? "" : Math.max(0, value))
+              setAdditionalCosts(
+                value === ""
+                  ? ""
+                  : Math.max(0, value)
+              )
             }
             inputRef={additionalRef}
           />
-                    <div
+
+          <div
             style={{
               display: "flex",
               justifyContent: "flex-end",
@@ -253,6 +309,7 @@ export default function ROICalculator({
                 setInvestment("");
                 setReturnAmount("");
                 setAdditionalCosts("");
+
                 investmentRef.current?.focus();
               }}
               style={{
@@ -314,13 +371,14 @@ export default function ROICalculator({
           </p>
         </div>
       )}
-            {hasInput && (
+
+      {hasInput && (
         <>
           <div
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(240px,1fr))",
+                "repeat(auto-fit, minmax(240px, 1fr))",
               gap: "20px",
               marginTop: "40px",
             }}
@@ -332,12 +390,22 @@ export default function ROICalculator({
 
             <ResultCard
               title={text.netProfit}
-              value={<MoneyValue value={netProfit} />}
+              value={
+                <MoneyValue
+                  value={netProfit}
+                  currency={currency}
+                />
+              }
             />
 
             <ResultCard
               title={text.totalInvestment}
-              value={<MoneyValue value={totalInvestment} />}
+              value={
+                <MoneyValue
+                  value={totalInvestment}
+                  currency={currency}
+                />
+              }
             />
 
             <ResultCard
