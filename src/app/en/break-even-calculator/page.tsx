@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 import BreakEvenCalculator from "../../break-even-calculator/BreakEvenCalculator";
-import BreakEvenGuide from "../../break-even-calculator/BreakEvenGuide";
 
 export const metadata: Metadata = {
-  title:
-    "Break-even Calculator | Find Your Break-even Point",
+  title: "Break-even Calculator | BizTools",
+
   description:
     "Calculate your break-even point, required sales volume, and revenue needed to become profitable. Free business calculator for entrepreneurs, freelancers, and small businesses.",
+
   keywords: [
     "break even calculator",
     "break even point calculator",
@@ -15,6 +15,40 @@ export const metadata: Metadata = {
     "sales volume calculator",
     "profit planning calculator",
   ],
+
+  alternates: {
+    canonical: "/en/break-even-calculator",
+
+    languages: {
+      "ja-JP": "/break-even-calculator",
+      "en-US": "/en/break-even-calculator",
+      "x-default": "/break-even-calculator",
+    },
+  },
+
+  openGraph: {
+    title: "Break-even Calculator | BizTools",
+
+    description:
+      "Calculate your break-even point, required sales volume, and revenue needed to become profitable.",
+
+    url: "/en/break-even-calculator",
+
+    siteName: "BizTools",
+
+    locale: "en_US",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Break-even Calculator | BizTools",
+
+    description:
+      "Calculate your break-even point, required sales volume, and revenue needed to become profitable.",
+  },
 };
 
 export default function BreakEvenCalculatorPage() {
@@ -47,9 +81,9 @@ export default function BreakEvenCalculatorPage() {
             maxWidth: "850px",
           }}
         >
-          Find out how many products or services you
-          need to sell before your business starts
-          making a profit.
+          Find out how many products or services you need
+          to sell before your business starts making a
+          profit.
         </p>
 
         <p
@@ -61,16 +95,14 @@ export default function BreakEvenCalculatorPage() {
             maxWidth: "850px",
           }}
         >
-          This calculator helps entrepreneurs,
-          freelancers, and small business owners
-          understand pricing, costs, and the sales
-          volume needed to reach profitability.
+          This calculator helps entrepreneurs, freelancers,
+          and small business owners understand pricing,
+          costs, and the sales volume needed to reach
+          profitability.
         </p>
       </section>
 
-
       <BreakEvenCalculator lang="en" />
-
 
       <section
         style={{
@@ -95,10 +127,10 @@ export default function BreakEvenCalculatorPage() {
             color: "#374151",
           }}
         >
-          The break-even point is the moment when your
-          total revenue equals your total costs. At
-          this point, your business is not losing money,
-          but it is also not generating profit yet.
+          The break-even point is the moment when your total
+          revenue equals your total costs. At this point,
+          your business is not losing money, but it is also
+          not generating profit yet.
         </p>
 
         <p
@@ -109,13 +141,13 @@ export default function BreakEvenCalculatorPage() {
             color: "#374151",
           }}
         >
-          Understanding your break-even point helps
-          you make better decisions about pricing,
-          expenses, hiring, advertising, and business
-          growth.
+          Understanding your break-even point helps you make
+          better decisions about pricing, expenses, hiring,
+          advertising, and business growth.
         </p>
       </section>
-            <section
+
+      <section
         style={{
           marginTop: "70px",
         }}
@@ -139,16 +171,15 @@ export default function BreakEvenCalculatorPage() {
           }}
         >
           The break-even point is calculated by comparing
-          your fixed costs with the amount of money
-          each sale contributes after variable costs.
+          your fixed costs with the amount of money each
+          sale contributes after variable costs.
         </p>
 
         <div
           style={{
             marginTop: "30px",
             background: "#F9FAFB",
-            border:
-              "1px solid #E5E7EB",
+            border: "1px solid #E5E7EB",
             borderRadius: "16px",
             padding: "30px",
           }}
@@ -175,7 +206,6 @@ export default function BreakEvenCalculatorPage() {
           </p>
         </div>
 
-
         <p
           style={{
             marginTop: "25px",
@@ -185,12 +215,11 @@ export default function BreakEvenCalculatorPage() {
           }}
         >
           Contribution margin represents the amount
-          remaining from each sale after paying the
-          variable cost of producing that product or
-          delivering that service.
+          remaining from each sale after paying the variable
+          cost of producing that product or delivering that
+          service.
         </p>
       </section>
-
 
       <section
         style={{
@@ -215,18 +244,16 @@ export default function BreakEvenCalculatorPage() {
             color: "#374151",
           }}
         >
-          Imagine you sell a product for $100.
-          Your variable cost is $40 per product, and
-          your monthly fixed expenses are $6,000.
+          Imagine you sell a product for $100. Your variable
+          cost is $40 per product, and your monthly fixed
+          expenses are $6,000.
         </p>
-
 
         <div
           style={{
             marginTop: "30px",
             background: "#FFFFFF",
-            border:
-              "1px solid #E5E7EB",
+            border: "1px solid #E5E7EB",
             borderRadius: "16px",
             padding: "30px",
           }}
@@ -239,29 +266,17 @@ export default function BreakEvenCalculatorPage() {
               color: "#374151",
             }}
           >
-            <li>
-              Selling price: $100
-            </li>
+            <li>Selling price: $100</li>
 
-            <li>
-              Variable cost: $40
-            </li>
+            <li>Variable cost: $40</li>
 
-            <li>
-              Contribution per unit: $60
-            </li>
+            <li>Contribution per unit: $60</li>
 
-            <li>
-              Fixed costs: $6,000
-            </li>
+            <li>Fixed costs: $6,000</li>
 
-            <li>
-              Break-even point:
-              100 units
-            </li>
+            <li>Break-even point: 100 units</li>
           </ul>
         </div>
-
 
         <p
           style={{
@@ -272,11 +287,12 @@ export default function BreakEvenCalculatorPage() {
           }}
         >
           This means the business needs to sell
-          approximately 100 products every month
-          before it starts generating profit.
+          approximately 100 products every month before it
+          starts generating profit.
         </p>
       </section>
-            <section
+
+      <section
         style={{
           marginTop: "70px",
         }}
@@ -300,10 +316,9 @@ export default function BreakEvenCalculatorPage() {
           }}
         >
           Break-even analysis is one of the most useful
-          tools for understanding whether a business
-          model can become profitable.
+          tools for understanding whether a business model
+          can become profitable.
         </p>
-
 
         <div
           style={{
@@ -338,12 +353,10 @@ export default function BreakEvenCalculatorPage() {
                 color: "#4B5563",
               }}
             >
-              Understand whether your current price
-              covers costs and creates enough profit
-              potential.
+              Understand whether your current price covers
+              costs and creates enough profit potential.
             </p>
           </div>
-
 
           <div
             style={{
@@ -369,11 +382,10 @@ export default function BreakEvenCalculatorPage() {
                 color: "#4B5563",
               }}
             >
-              Estimate how many sales are required
-              before investing more money into growth.
+              Estimate how many sales are required before
+              investing more money into growth.
             </p>
           </div>
-
 
           <div
             style={{
@@ -399,13 +411,12 @@ export default function BreakEvenCalculatorPage() {
                 color: "#4B5563",
               }}
             >
-              Know your minimum sales target before
-              making important financial decisions.
+              Know your minimum sales target before making
+              important financial decisions.
             </p>
           </div>
         </div>
       </section>
-
 
       <section
         style={{
@@ -422,7 +433,6 @@ export default function BreakEvenCalculatorPage() {
           Who Should Use This Calculator?
         </h2>
 
-
         <p
           style={{
             marginTop: "20px",
@@ -431,10 +441,9 @@ export default function BreakEvenCalculatorPage() {
             color: "#374151",
           }}
         >
-          Break-even calculations are useful for many
-          types of businesses and financial decisions.
+          Break-even calculations are useful for many types
+          of businesses and financial decisions.
         </p>
-
 
         <ul
           style={{
@@ -445,28 +454,19 @@ export default function BreakEvenCalculatorPage() {
             color: "#374151",
           }}
         >
-          <li>
-            Entrepreneurs starting a new business
-          </li>
+          <li>Entrepreneurs starting a new business</li>
 
-          <li>
-            Freelancers calculating required clients
-          </li>
+          <li>Freelancers calculating required clients</li>
 
-          <li>
-            Online sellers planning product sales
-          </li>
+          <li>Online sellers planning product sales</li>
 
-          <li>
-            Small businesses reviewing profitability
-          </li>
+          <li>Small businesses reviewing profitability</li>
 
-          <li>
-            Students learning business finance
-          </li>
+          <li>Students learning business finance</li>
         </ul>
       </section>
-           <section
+
+      <section
         style={{
           marginTop: "70px",
         }}
@@ -481,7 +481,6 @@ export default function BreakEvenCalculatorPage() {
           Frequently Asked Questions
         </h2>
 
-
         <div
           style={{
             marginTop: "30px",
@@ -490,7 +489,6 @@ export default function BreakEvenCalculatorPage() {
             gap: "30px",
           }}
         >
-
           <div>
             <h3
               style={{
@@ -510,13 +508,11 @@ export default function BreakEvenCalculatorPage() {
                 color: "#374151",
               }}
             >
-              Break-even means your total revenue is
-              equal to your total expenses. You are
-              covering all costs but have not generated
-              profit yet.
+              Break-even means your total revenue is equal
+              to your total expenses. You are covering all
+              costs but have not generated profit yet.
             </p>
           </div>
-
 
           <div>
             <h3
@@ -537,13 +533,11 @@ export default function BreakEvenCalculatorPage() {
                 color: "#374151",
               }}
             >
-              Every additional sale after the
-              break-even point contributes toward profit
-              because fixed costs have already been
-              covered.
+              Every additional sale after the break-even
+              point contributes toward profit because fixed
+              costs have already been covered.
             </p>
           </div>
-
 
           <div>
             <h3
@@ -564,13 +558,11 @@ export default function BreakEvenCalculatorPage() {
                 color: "#374151",
               }}
             >
-              You can reach break-even faster by
-              increasing prices, reducing variable
-              costs, lowering fixed expenses, or
-              increasing sales volume.
+              You can reach break-even faster by increasing
+              prices, reducing variable costs, lowering
+              fixed expenses, or increasing sales volume.
             </p>
           </div>
-
 
           <div>
             <h3
@@ -592,58 +584,52 @@ export default function BreakEvenCalculatorPage() {
                 color: "#374151",
               }}
             >
-              Yes. Small businesses and freelancers can
-              use break-even analysis to understand
-              pricing, sales targets, and financial
-              goals.
+              Yes. Small businesses and freelancers can use
+              break-even analysis to understand pricing,
+              sales targets, and financial goals.
             </p>
           </div>
-
         </div>
       </section>
-
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context":
-              "https://schema.org",
-            "@type":
-              "FAQPage",
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+
             mainEntity: [
               {
-                "@type":
-                  "Question",
-                name:
-                  "What does break-even mean?",
+                "@type": "Question",
+                name: "What does break-even mean?",
+
                 acceptedAnswer: {
-                  "@type":
-                    "Answer",
+                  "@type": "Answer",
                   text:
                     "Break-even means total revenue equals total expenses.",
                 },
               },
+
               {
-                "@type":
-                  "Question",
+                "@type": "Question",
                 name:
                   "What happens after reaching break-even?",
+
                 acceptedAnswer: {
-                  "@type":
-                    "Answer",
+                  "@type": "Answer",
                   text:
                     "Additional sales after break-even contribute toward profit.",
                 },
               },
+
               {
-                "@type":
-                  "Question",
+                "@type": "Question",
                 name:
                   "How can I reach break-even faster?",
+
                 acceptedAnswer: {
-                  "@type":
-                    "Answer",
+                  "@type": "Answer",
                   text:
                     "Businesses can improve pricing, reduce costs, or increase sales volume.",
                 },
@@ -652,7 +638,6 @@ export default function BreakEvenCalculatorPage() {
           }),
         }}
       />
-
     </main>
   );
-} 
+}
