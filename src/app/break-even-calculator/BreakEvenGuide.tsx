@@ -102,15 +102,15 @@ export default function BreakEvenGuide({
           relatedCalculators: [
             {
               title: "利益計算ツール",
-              href: "/ja/profit-calculator",
+              href: "/profit-calculator",
             },
             {
               title: "価格設定ツール",
-              href: "/ja/pricing-calculator",
+              href: "/pricing-calculator",
             },
             {
               title: "売上目標計算",
-              href: "/ja/sales-target-calculator",
+              href: "/sales-target-calculator",
             },
           ],
         }

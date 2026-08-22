@@ -51,7 +51,7 @@ export default function HeroJa() {
           }}
         >
           <Link
-            href="/ja/calculators"
+            href="/calculators"
             style={{
               background: "#2563EB",
               color: "#FFFFFF",
@@ -66,7 +66,7 @@ export default function HeroJa() {
           </Link>
 
           <Link
-            href="/ja/profit-calculator"
+            href="/profit-calculator"
             style={{
               background: "#FFFFFF",
               border: "1px solid #D1D5DB",

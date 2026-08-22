@@ -23,9 +23,9 @@ export default function Hero({
 
           secondaryButton: "利益計算を試す",
 
-          primaryHref: "/ja/calculators",
+          primaryHref: "/calculators",
 
-          secondaryHref: "/ja/profit-calculator",
+          secondaryHref: "/profit-calculator",
 
           features: [
             "✓ 完全無料",
