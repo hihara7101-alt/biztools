@@ -506,6 +506,108 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ビジネスガイド */}
+
+      <section
+        style={{
+          marginTop: "100px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "40px",
+            fontWeight: 700,
+            textAlign: "center",
+            color: "#111827",
+          }}
+        >
+          ビジネスガイド
+        </h2>
+
+        <p
+          style={{
+            marginTop: "16px",
+            textAlign: "center",
+            maxWidth: "760px",
+            marginInline: "auto",
+            color: "#6B7280",
+            fontSize: "18px",
+            lineHeight: 1.8,
+          }}
+        >
+          ビジネスの数字を理解し、経営判断に活かすための基礎知識を
+          わかりやすく解説します。
+        </p>
+
+        <div
+          style={{
+            marginTop: "40px",
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          <Link
+            href="/guides/profit-margin"
+            style={{
+              display: "block",
+              padding: "28px",
+              border: "1px solid #E5E7EB",
+              borderRadius: "16px",
+              textDecoration: "none",
+              backgroundColor: "#FFFFFF",
+              color: "#111827",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "14px",
+                fontWeight: 700,
+                color: "#2563EB",
+              }}
+            >
+              利益・利益率
+            </div>
+
+            <h3
+              style={{
+                marginTop: "12px",
+                marginBottom: 0,
+                fontSize: "22px",
+                fontWeight: 700,
+                lineHeight: 1.5,
+              }}
+            >
+              利益率とは？計算方法と利益を改善する5つのポイント
+            </h3>
+
+            <p
+              style={{
+                marginTop: "12px",
+                marginBottom: 0,
+                color: "#6B7280",
+                fontSize: "16px",
+                lineHeight: 1.8,
+              }}
+            >
+              利益率の意味や計算方法、利益を改善するためのポイントを
+              具体例とともに解説します。
+            </p>
+
+            <div
+              style={{
+                marginTop: "20px",
+                fontWeight: 700,
+                color: "#2563EB",
+              }}
+            >
+              ガイドを読む →
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* BizToolsが選ばれる理由 */}
 
       <section
