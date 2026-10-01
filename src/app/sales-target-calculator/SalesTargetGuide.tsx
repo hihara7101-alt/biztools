@@ -46,11 +46,11 @@ export default function SalesTargetGuide({
             },
             {
               label: "必要販売数",
-              value: "133.3個",
+              value: "134個",
             },
             {
               label: "必要売上高",
-              value: "¥1,333,333",
+              value: "¥1,340,000",
             },
           ],
 
@@ -208,11 +208,11 @@ export default function SalesTargetGuide({
             },
             {
               label: "Units Required",
-              value: "133.3",
+              value: "134",
             },
             {
               label: "Required Revenue",
-              value: "$13,333",
+              value: "$13,400",
             },
           ],
 
