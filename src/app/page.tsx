@@ -543,68 +543,105 @@ export default function Home() {
           style={{
             marginTop: "40px",
             display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "24px",
           }}
         >
-          <Link
-            href="/guides/profit-margin"
-            style={{
-              display: "block",
-              padding: "28px",
-              border: "1px solid #E5E7EB",
-              borderRadius: "16px",
-              textDecoration: "none",
-              backgroundColor: "#FFFFFF",
-              color: "#111827",
-            }}
-          >
-            <div
+          {[
+            {
+              category: "利益・利益率",
+              title: "利益率とは？計算方法と利益を改善する5つのポイント",
+              description:
+                "利益率の意味や計算方法、利益を改善するためのポイントを具体例とともに解説します。",
+              href: "/guides/profit-margin",
+            },
+            {
+              category: "損益分岐点",
+              title: "損益分岐点とは？計算方法と黒字化のポイント",
+              description:
+                "固定費と変動費の考え方から、黒字化に必要な販売数量や売上高の求め方まで解説します。",
+              href: "/guides/break-even-point",
+            },
+            {
+              category: "ROI・投資",
+              title: "ROIとは？計算方法と投資判断に活かす5つのポイント",
+              description:
+                "ROIの基本的な意味と計算方法、投資効果を数字で判断するためのポイントを解説します。",
+              href: "/guides/roi",
+            },
+            {
+              category: "価格設定",
+              title: "価格設定とは？利益を確保する価格の決め方と5つのポイント",
+              description:
+                "原価や利益率を踏まえて販売価格を決める考え方と、価格設定で確認したいポイントを解説します。",
+              href: "/guides/pricing",
+            },
+            {
+              category: "売上目標",
+              title: "売上目標とは？必要売上と販売数量の決め方5つのポイント",
+              description:
+                "目標利益から必要な売上高や販売数量を考える方法と、現実的な売上目標の立て方を解説します。",
+              href: "/guides/sales-target",
+            },
+          ].map((guide) => (
+            <Link
+              key={guide.href}
+              href={guide.href}
               style={{
-                fontSize: "14px",
-                fontWeight: 700,
-                color: "#2563EB",
+                display: "block",
+                padding: "28px",
+                border: "1px solid #E5E7EB",
+                borderRadius: "16px",
+                textDecoration: "none",
+                backgroundColor: "#FFFFFF",
+                color: "#111827",
               }}
             >
-              利益・利益率
-            </div>
+              <div
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "#2563EB",
+                }}
+              >
+                {guide.category}
+              </div>
 
-            <h3
-              style={{
-                marginTop: "12px",
-                marginBottom: 0,
-                fontSize: "22px",
-                fontWeight: 700,
-                lineHeight: 1.5,
-              }}
-            >
-              利益率とは？計算方法と利益を改善する5つのポイント
-            </h3>
+              <h3
+                style={{
+                  marginTop: "12px",
+                  marginBottom: 0,
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  lineHeight: 1.5,
+                }}
+              >
+                {guide.title}
+              </h3>
 
-            <p
-              style={{
-                marginTop: "12px",
-                marginBottom: 0,
-                color: "#6B7280",
-                fontSize: "16px",
-                lineHeight: 1.8,
-              }}
-            >
-              利益率の意味や計算方法、利益を改善するためのポイントを
-              具体例とともに解説します。
-            </p>
+              <p
+                style={{
+                  marginTop: "12px",
+                  marginBottom: 0,
+                  color: "#6B7280",
+                  fontSize: "16px",
+                  lineHeight: 1.8,
+                }}
+              >
+                {guide.description}
+              </p>
 
-            <div
-              style={{
-                marginTop: "20px",
-                fontWeight: 700,
-                color: "#2563EB",
-              }}
-            >
-              ガイドを読む →
-            </div>
-          </Link>
+              <div
+                style={{
+                  marginTop: "20px",
+                  fontWeight: 700,
+                  color: "#2563EB",
+                }}
+              >
+                ガイドを読む →
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
