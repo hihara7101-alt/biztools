@@ -51,9 +51,6 @@ export default function ProfitCalculator({
   const grossProfit =
     revenueValue - variableValue;
 
-  const contributionMargin =
-    revenueValue - variableValue;
-
   const netProfit =
     revenueValue -
     variableValue -
@@ -62,12 +59,6 @@ export default function ProfitCalculator({
   const grossMargin =
     revenueValue > 0
       ? (grossProfit / revenueValue) * 100
-      : 0;
-
-  const contributionMarginRatio =
-    revenueValue > 0
-      ? (contributionMargin / revenueValue) *
-        100
       : 0;
 
   const netMargin =
@@ -116,51 +107,33 @@ export default function ProfitCalculator({
             "計算を始めましょう",
 
           readyDescription:
-            "売上・変動費・固定費を入力すると、利益・利益率・限界利益をすぐに計算できます。",
+            "売上・変動費・固定費を入力すると、粗利益・純利益・利益率をすぐに計算できます。",
 
           grossProfit: "粗利益",
 
           grossMargin: "粗利益率",
-
-          contributionMargin:
-            "限界利益",
-
-          contributionMarginRatio:
-            "限界利益率",
 
           netProfit: "純利益",
 
           netMargin: "純利益率",
 
           losingTitle:
-            "赤字です",
+            "費用が売上を上回っています",
 
           losingMessage:
-            "費用が売上を上回っています。価格設定、コスト削減、販売数量を見直しましょう。",
+            "現在の入力条件では純利益がマイナスです。価格、売上、変動費、固定費を変更して結果を比較できます。",
 
-          excellentTitle:
-            "非常に高い利益率",
+          profitableTitle:
+            "純利益がプラスです",
 
-          excellentMessage:
-            "利益率は非常に良好です。このままコスト管理を続けながら事業を拡大しましょう。",
+          profitableMessage:
+            "現在の入力条件では利益が出ています。利益率は業種、事業規模、成長段階などによって適切な水準が異なるため、過去の実績や事業計画と比較して確認してください。",
 
-          healthyTitle:
-            "健全な利益率",
+          breakEvenTitle:
+            "収支が均衡しています",
 
-          healthyMessage:
-            "利益率は健全です。効率改善や売上拡大でさらに利益を伸ばせます。",
-
-          moderateTitle:
-            "平均的な利益率",
-
-          moderateMessage:
-            "利益は出ていますが、価格設定やコスト改善でさらに利益率を高められます。",
-
-          lowTitle:
-            "利益率が低い状態",
-
-          lowMessage:
-            "利益は出ていますが余裕が少なく、コスト増加で赤字になる可能性があります。",
+          breakEvenMessage:
+            "現在の入力条件では純利益が0です。売上の増加やコストの変化が利益にどのように影響するか比較してみましょう。",
         }
       : {
           sectionTitle:
@@ -193,19 +166,13 @@ export default function ProfitCalculator({
             "Ready to calculate?",
 
           readyDescription:
-            "Enter your revenue and business costs to calculate profit, margins and contribution margin instantly.",
+            "Enter your revenue and business costs to calculate gross profit, net profit and profit margins instantly.",
 
           grossProfit:
             "Gross Profit",
 
           grossMargin:
             "Gross Margin",
-
-          contributionMargin:
-            "Contribution Margin",
-
-          contributionMarginRatio:
-            "Contribution Margin Ratio",
 
           netProfit:
             "Net Profit",
@@ -214,34 +181,22 @@ export default function ProfitCalculator({
             "Net Profit Margin",
 
           losingTitle:
-            "Business is Losing Money",
+            "Expenses Exceed Revenue",
 
           losingMessage:
-            "Your expenses are higher than your revenue. Review pricing, reduce costs, or increase sales volume.",
+            "Under the current inputs, net profit is negative. Change your pricing, revenue, variable costs or fixed costs to compare different scenarios.",
 
-          excellentTitle:
-            "Excellent Profit Margin",
+          profitableTitle:
+            "Net Profit Is Positive",
 
-          excellentMessage:
-            "Your business is performing exceptionally well. Continue monitoring costs while maintaining your pricing strategy.",
+          profitableMessage:
+            "Under the current inputs, the business is generating a profit. Appropriate profit margins vary by industry, business size and stage, so compare the result with your historical performance and business plan.",
 
-          healthyTitle:
-            "Healthy Profit Margin",
+          breakEvenTitle:
+            "Revenue and Costs Are Equal",
 
-          healthyMessage:
-            "Your business has a healthy profit margin. Look for opportunities to improve efficiency and continue growing.",
-
-          moderateTitle:
-            "Moderate Profit Margin",
-
-          moderateMessage:
-            "Your business is profitable, but there is room for improvement through better pricing or cost control.",
-
-          lowTitle:
-            "Very Low Profit Margin",
-
-          lowMessage:
-            "Although your business is profitable, your margin is very small. A slight increase in costs could eliminate your profit.",
+          breakEvenMessage:
+            "Under the current inputs, net profit is zero. Try changing revenue or costs to see how different assumptions affect profitability.",
         };
 
   const insight = useMemo(() => {
@@ -254,44 +209,22 @@ export default function ProfitCalculator({
       };
     }
 
-    if (netMargin >= 20) {
+    if (netProfit > 0) {
       return {
-        title: text.excellentTitle,
+        title: text.profitableTitle,
         icon: "🟢",
         color: "#16A34A",
-        message:
-          text.excellentMessage,
-      };
-    }
-
-    if (netMargin >= 10) {
-      return {
-        title: text.healthyTitle,
-        icon: "🔵",
-        color: "#2563EB",
-        message:
-          text.healthyMessage,
-      };
-    }
-
-    if (netMargin >= 5) {
-      return {
-        title: text.moderateTitle,
-        icon: "🟡",
-        color: "#D97706",
-        message:
-          text.moderateMessage,
+        message: text.profitableMessage,
       };
     }
 
     return {
-      title: text.lowTitle,
-      icon: "🟠",
-      color: "#EA580C",
-      message: text.lowMessage,
+      title: text.breakEvenTitle,
+      icon: "🔵",
+      color: "#2563EB",
+      message: text.breakEvenMessage,
     };
   }, [
-    netMargin,
     netProfit,
     text,
   ]);
@@ -489,31 +422,6 @@ export default function ProfitCalculator({
               }
               value={formatPercent(
                 grossMargin
-              )}
-            />
-
-            <ResultCard
-              title={
-                text.contributionMargin
-              }
-              value={
-                <MoneyValue
-                  value={
-                    contributionMargin
-                  }
-                  currency={
-                    currency
-                  }
-                />
-              }
-            />
-
-            <ResultCard
-              title={
-                text.contributionMarginRatio
-              }
-              value={formatPercent(
-                contributionMarginRatio
               )}
             />
 

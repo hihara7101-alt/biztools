@@ -48,24 +48,30 @@ export default function PricingCalculator({
   const taxValue =
     Number(tax) || 0;
 
+  const isMarginValid =
+    marginValue < 100;
+
   const sellingPrice =
-    marginValue >= 100
-      ? 0
-      : costValue /
-        (1 - marginValue / 100);
+    isMarginValid
+      ? costValue /
+        (1 - marginValue / 100)
+      : 0;
 
   const profitPerUnit =
-    sellingPrice - costValue;
+    isMarginValid
+      ? sellingPrice - costValue
+      : 0;
 
   const markup =
-    costValue > 0
-      ? (profitPerUnit / costValue) *
-        100
+    isMarginValid && costValue > 0
+      ? (profitPerUnit / costValue) * 100
       : 0;
 
   const priceWithTax =
-    sellingPrice *
-    (1 + taxValue / 100);
+    isMarginValid
+      ? sellingPrice *
+        (1 + taxValue / 100)
+      : 0;
 
   const hasInput =
     cost !== "" ||
@@ -103,7 +109,7 @@ export default function PricingCalculator({
             "販売価格を計算しましょう",
 
           readyDescription:
-            "原価と利益率を入力すると最適な販売価格を計算できます。",
+            "原価と希望利益率を入力すると、販売価格・利益・原価利益率を計算できます。",
 
           sellingPrice:
             "販売価格",
@@ -116,23 +122,17 @@ export default function PricingCalculator({
           taxPrice:
             "税込価格",
 
-          excellentTitle:
-            "十分な利益があります",
+          invalidTitle:
+            "希望利益率を確認してください",
 
-          excellentMessage:
-            "利益率が高く、健全な価格設定です。",
+          invalidMessage:
+            "希望利益率は100%未満で入力してください。利益率が100%の場合、販売価格の全額が利益になる計算となるため、有限の販売価格を算出できません。",
 
-          healthyTitle:
-            "適切な価格設定",
+          calculatedTitle:
+            "価格を計算しました",
 
-          healthyMessage:
-            "一般的な利益率です。",
-
-          lowTitle:
-            "利益率が低めです",
-
-          lowMessage:
-            "価格設定を見直すことで利益改善が期待できます。",
+          calculatedMessage:
+            "入力した原価と希望利益率から販売価格を計算しています。適切な利益率は業種、商品、競合、販売数量などによって異なるため、実際の価格設定では市場環境や事業計画とあわせて確認してください。",
         }
       : {
           sectionTitle:
@@ -166,7 +166,7 @@ export default function PricingCalculator({
             "Ready to calculate?",
 
           readyDescription:
-            "Enter your product cost and desired margin to calculate your ideal selling price.",
+            "Enter your product cost and desired margin to calculate selling price, profit and markup.",
 
           sellingPrice:
             "Selling Price",
@@ -180,55 +180,39 @@ export default function PricingCalculator({
           taxPrice:
             "Price Including Tax",
 
-          excellentTitle:
-            "Excellent Pricing",
+          invalidTitle:
+            "Check Your Desired Margin",
 
-          excellentMessage:
-            "Your pricing provides a healthy profit margin.",
+          invalidMessage:
+            "Enter a desired margin below 100%. At a 100% margin, the entire selling price would need to be profit, so a finite selling price cannot be calculated.",
 
-          healthyTitle:
-            "Good Pricing",
+          calculatedTitle:
+            "Price Calculated",
 
-          healthyMessage:
-            "Your pricing appears balanced.",
-
-          lowTitle:
-            "Low Profit Margin",
-
-          lowMessage:
-            "Consider increasing your price or lowering costs.",
+          calculatedMessage:
+            "The selling price is calculated from the cost and desired margin you entered. Appropriate margins vary by industry, product, competition and sales volume, so consider the result together with your market conditions and business plan.",
         };
 
   const insight = useMemo(() => {
-    if (marginValue >= 40) {
+    if (!isMarginValid) {
       return {
-        title:
-          text.excellentTitle,
-        icon: "🟢",
-        color: "#16A34A",
-        message:
-          text.excellentMessage,
-      };
-    }
-
-    if (marginValue >= 20) {
-      return {
-        title:
-          text.healthyTitle,
-        icon: "🔵",
-        color: "#2563EB",
-        message:
-          text.healthyMessage,
+        title: text.invalidTitle,
+        icon: "🔴",
+        color: "#DC2626",
+        message: text.invalidMessage,
       };
     }
 
     return {
-      title: text.lowTitle,
-      icon: "🟠",
-      color: "#EA580C",
-      message: text.lowMessage,
+      title: text.calculatedTitle,
+      icon: "🔵",
+      color: "#2563EB",
+      message: text.calculatedMessage,
     };
-  }, [marginValue, text]);
+  }, [
+    isMarginValid,
+    text,
+  ]);
 
   return (
     <>
@@ -389,66 +373,68 @@ export default function PricingCalculator({
 
       {hasInput && (
         <>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: "20px",
-              marginTop: "40px",
-            }}
-          >
-            <ResultCard
-              title={
-                text.sellingPrice
-              }
-              value={
-                <MoneyValue
-                  value={
-                    sellingPrice
-                  }
-                  currency={
-                    currency
-                  }
-                />
-              }
-            />
+          {isMarginValid && (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: "20px",
+                marginTop: "40px",
+              }}
+            >
+              <ResultCard
+                title={
+                  text.sellingPrice
+                }
+                value={
+                  <MoneyValue
+                    value={
+                      sellingPrice
+                    }
+                    currency={
+                      currency
+                    }
+                  />
+                }
+              />
 
-            <ResultCard
-              title={text.profit}
-              value={
-                <MoneyValue
-                  value={
-                    profitPerUnit
-                  }
-                  currency={
-                    currency
-                  }
-                />
-              }
-            />
+              <ResultCard
+                title={text.profit}
+                value={
+                  <MoneyValue
+                    value={
+                      profitPerUnit
+                    }
+                    currency={
+                      currency
+                    }
+                  />
+                }
+              />
 
-            <ResultCard
-              title={text.markup}
-              value={`${markup.toFixed(
-                1
-              )}%`}
-            />
+              <ResultCard
+                title={text.markup}
+                value={`${markup.toFixed(
+                  1
+                )}%`}
+              />
 
-            <ResultCard
-              title={text.taxPrice}
-              value={
-                <MoneyValue
-                  value={
-                    priceWithTax
-                  }
-                  currency={
-                    currency
-                  }
-                />
-              }
-            />
-          </div>
+              <ResultCard
+                title={text.taxPrice}
+                value={
+                  <MoneyValue
+                    value={
+                      priceWithTax
+                    }
+                    currency={
+                      currency
+                    }
+                  />
+                }
+              />
+            </div>
+          )}
 
           <div
             style={{

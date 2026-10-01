@@ -60,10 +60,15 @@ export default function SalesTargetCalculator({
   const contributionMargin =
     priceValue - variableValue;
 
-  const unitsNeeded =
+  const exactUnitsNeeded =
     contributionMargin > 0
       ? (targetValue + fixedValue) /
         contributionMargin
+      : 0;
+
+  const unitsNeeded =
+    contributionMargin > 0
+      ? Math.ceil(exactUnitsNeeded)
       : 0;
 
   const requiredRevenue =
@@ -71,8 +76,7 @@ export default function SalesTargetCalculator({
 
   const contributionRatio =
     priceValue > 0
-      ? (contributionMargin / priceValue) *
-        100
+      ? (contributionMargin / priceValue) * 100
       : 0;
 
   const hasInput =
@@ -80,6 +84,9 @@ export default function SalesTargetCalculator({
     sellingPrice !== "" ||
     variableCost !== "" ||
     fixedCosts !== "";
+
+  const canCalculate =
+    contributionMargin > 0;
 
   const text =
     lang === "ja"
@@ -124,6 +131,18 @@ export default function SalesTargetCalculator({
           contribution: "限界利益",
 
           ratio: "限界利益率",
+
+          invalidTitle:
+            "販売価格と変動費を確認してください",
+
+          invalidMessage:
+            "販売価格が変動費以下の場合、1件販売するごとに目標利益へ充当できる限界利益が生まれないため、必要販売数を計算できません。販売価格または変動費を見直してください。",
+
+          calculatedTitle:
+            "必要販売数を計算しました",
+
+          calculatedMessage:
+            "必要販売数は、目標利益を確実に達成できるよう1単位未満を切り上げています。実際の達成可能性は販売期間、市場規模、需要、販売能力などによって異なるため、事業計画とあわせて確認してください。",
         }
       : {
           sectionTitle:
@@ -176,75 +195,39 @@ export default function SalesTargetCalculator({
 
           ratio:
             "Contribution Margin Ratio",
+
+          invalidTitle:
+            "Check Price and Variable Cost",
+
+          invalidMessage:
+            "When the selling price is less than or equal to the variable cost, each sale produces no positive contribution margin toward the target profit, so the required number of units cannot be calculated. Review the selling price or variable cost.",
+
+          calculatedTitle:
+            "Required Units Calculated",
+
+          calculatedMessage:
+            "Required units are rounded up to the next whole unit so the calculated quantity is sufficient to reach the target profit. Actual feasibility depends on factors such as the sales period, market size, demand and sales capacity, so compare the result with your business plan.",
         };
 
   const insight = useMemo(() => {
-    if (
-      priceValue <= variableValue &&
-      hasInput
-    ) {
+    if (!canCalculate) {
       return {
-        title:
-          lang === "ja"
-            ? "利益を出せません"
-            : "No Profit Possible",
+        title: text.invalidTitle,
         icon: "🔴",
         color: "#DC2626",
-        message:
-          lang === "ja"
-            ? "販売価格が変動費以下のため利益を生み出せません。価格またはコストを見直してください。"
-            : "Your selling price is lower than or equal to your variable cost. Increase your price or reduce costs.",
-      };
-    }
-
-    if (unitsNeeded <= 100) {
-      return {
-        title:
-          lang === "ja"
-            ? "達成しやすい目標です"
-            : "Achievable Target",
-        icon: "🟢",
-        color: "#16A34A",
-        message:
-          lang === "ja"
-            ? "比較的少ない販売数で目標利益を達成できます。"
-            : "You can reach your target profit with relatively few sales.",
-      };
-    }
-
-    if (unitsNeeded <= 500) {
-      return {
-        title:
-          lang === "ja"
-            ? "現実的な目標です"
-            : "Realistic Goal",
-        icon: "🔵",
-        color: "#2563EB",
-        message:
-          lang === "ja"
-            ? "十分達成可能な販売目標です。"
-            : "Your target appears realistic based on your pricing.",
+        message: text.invalidMessage,
       };
     }
 
     return {
-      title:
-        lang === "ja"
-          ? "目標が高めです"
-          : "Ambitious Target",
-      icon: "🟠",
-      color: "#EA580C",
-      message:
-        lang === "ja"
-          ? "販売価格やコスト改善も検討すると達成しやすくなります。"
-          : "Consider increasing your selling price or reducing costs to reach your goal faster.",
+      title: text.calculatedTitle,
+      icon: "🔵",
+      color: "#2563EB",
+      message: text.calculatedMessage,
     };
   }, [
-    hasInput,
-    lang,
-    priceValue,
-    variableValue,
-    unitsNeeded,
+    canCalculate,
+    text,
   ]);
 
   return (
@@ -427,59 +410,59 @@ export default function SalesTargetCalculator({
 
       {hasInput && (
         <>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: "20px",
-              marginTop: "40px",
-            }}
-          >
-            <ResultCard
-              title={text.units}
-              value={unitsNeeded.toFixed(
-                1
-              )}
-            />
+          {canCalculate && (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: "20px",
+                marginTop: "40px",
+              }}
+            >
+              <ResultCard
+                title={text.units}
+                value={unitsNeeded.toLocaleString()}
+              />
 
-            <ResultCard
-              title={text.revenue}
-              value={
-                <MoneyValue
-                  value={
-                    requiredRevenue
-                  }
-                  currency={
-                    currency
-                  }
-                />
-              }
-            />
+              <ResultCard
+                title={text.revenue}
+                value={
+                  <MoneyValue
+                    value={
+                      requiredRevenue
+                    }
+                    currency={
+                      currency
+                    }
+                  />
+                }
+              />
 
-            <ResultCard
-              title={
-                text.contribution
-              }
-              value={
-                <MoneyValue
-                  value={
-                    contributionMargin
-                  }
-                  currency={
-                    currency
-                  }
-                />
-              }
-            />
+              <ResultCard
+                title={
+                  text.contribution
+                }
+                value={
+                  <MoneyValue
+                    value={
+                      contributionMargin
+                    }
+                    currency={
+                      currency
+                    }
+                  />
+                }
+              />
 
-            <ResultCard
-              title={text.ratio}
-              value={`${contributionRatio.toFixed(
-                1
-              )}%`}
-            />
-          </div>
+              <ResultCard
+                title={text.ratio}
+                value={`${contributionRatio.toFixed(
+                  1
+                )}%`}
+              />
+            </div>
+          )}
 
           <div
             style={{

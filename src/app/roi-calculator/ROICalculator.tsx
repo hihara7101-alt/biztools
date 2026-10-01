@@ -69,6 +69,9 @@ export default function ROICalculator({
     returnAmount !== "" ||
     additionalCosts !== "";
 
+  const hasInvestment =
+    totalInvestment > 0;
+
   const text =
     lang === "ja"
       ? {
@@ -106,6 +109,30 @@ export default function ROICalculator({
           totalInvestment: "総投資額",
 
           multiple: "投資倍率",
+
+          missingInvestmentTitle:
+            "投資額を入力してください",
+
+          missingInvestmentMessage:
+            "ROIを計算するには、初期投資額または追加費用による総投資額が必要です。",
+
+          negativeTitle:
+            "純利益がマイナスです",
+
+          negativeMessage:
+            "現在の入力条件では回収額が総投資額を下回っています。ROIは投資期間やリスクなどを含まないため、結果は他の条件とあわせて確認してください。",
+
+          breakEvenTitle:
+            "投資額と回収額が同額です",
+
+          breakEvenMessage:
+            "現在の入力条件では純利益が0で、ROIは0%です。投資期間、リスク、資金回収のタイミングなどもあわせて検討してください。",
+
+          positiveTitle:
+            "純利益がプラスです",
+
+          positiveMessage:
+            "現在の入力条件では回収額が総投資額を上回っています。ROIの評価は投資期間、リスク、資金回収のタイミング、代替投資などによって異なるため、これらの条件とあわせて確認してください。",
         }
       : {
           sectionTitle:
@@ -139,7 +166,7 @@ export default function ROICalculator({
             "Ready to calculate ROI?",
 
           readyDescription:
-            "Enter your investment and return above to instantly calculate ROI, profit and investment performance.",
+            "Enter your investment and return above to calculate ROI, profit and investment multiple.",
 
           roi: "ROI",
 
@@ -151,86 +178,75 @@ export default function ROICalculator({
 
           multiple:
             "Investment Multiple",
+
+          missingInvestmentTitle:
+            "Enter an Investment Amount",
+
+          missingInvestmentMessage:
+            "A total investment amount is required to calculate ROI. Enter an initial investment or additional costs.",
+
+          negativeTitle:
+            "Net Profit Is Negative",
+
+          negativeMessage:
+            "Under the current inputs, the return amount is below the total investment. ROI does not account for factors such as investment period or risk, so consider the result together with those factors.",
+
+          breakEvenTitle:
+            "Return Equals Investment",
+
+          breakEvenMessage:
+            "Under the current inputs, net profit is zero and ROI is 0%. Also consider investment period, risk and the timing of cash recovery.",
+
+          positiveTitle:
+            "Net Profit Is Positive",
+
+          positiveMessage:
+            "Under the current inputs, the return amount exceeds the total investment. How an ROI should be evaluated depends on factors such as investment period, risk, timing of cash recovery and alternative investments.",
         };
 
   const insight = useMemo(() => {
-    if (netProfit < 0 && hasInput) {
+    if (!hasInvestment) {
       return {
         title:
-          lang === "ja"
-            ? "投資は赤字です"
-            : "Investment is Losing Money",
-        icon: "🔴",
-        color: "#DC2626",
-        message:
-          lang === "ja"
-            ? "投資額を回収できていません。収益を増やすかコストを見直しましょう。"
-            : "Your investment has not yet been recovered. Increase returns or reduce costs.",
-      };
-    }
-
-    if (roi >= 50) {
-      return {
-        title:
-          lang === "ja"
-            ? "非常に優れた投資"
-            : "Excellent Investment",
-        icon: "🟢",
-        color: "#16A34A",
-        message:
-          lang === "ja"
-            ? "ROIは非常に高く、優れた投資成果です。"
-            : "Your ROI is excellent and indicates a very successful investment.",
-      };
-    }
-
-    if (roi >= 20) {
-      return {
-        title:
-          lang === "ja"
-            ? "良好な投資"
-            : "Healthy Investment",
+          text.missingInvestmentTitle,
         icon: "🔵",
         color: "#2563EB",
         message:
-          lang === "ja"
-            ? "十分な利益を生み出しています。"
-            : "Your investment is producing a healthy return.",
+          text.missingInvestmentMessage,
       };
     }
 
-    if (roi >= 0) {
+    if (netProfit < 0) {
       return {
-        title:
-          lang === "ja"
-            ? "利益は出ています"
-            : "Profitable Investment",
-        icon: "🟡",
-        color: "#D97706",
+        title: text.negativeTitle,
+        icon: "🔴",
+        color: "#DC2626",
         message:
-          lang === "ja"
-            ? "利益は出ていますが、改善の余地があります。"
-            : "Your investment is profitable but still has room for improvement.",
+          text.negativeMessage,
+      };
+    }
+
+    if (netProfit === 0) {
+      return {
+        title: text.breakEvenTitle,
+        icon: "🔵",
+        color: "#2563EB",
+        message:
+          text.breakEvenMessage,
       };
     }
 
     return {
-      title:
-        lang === "ja"
-          ? "投資効率が低い状態"
-          : "Poor Investment Performance",
-      icon: "🟠",
-      color: "#EA580C",
+      title: text.positiveTitle,
+      icon: "🟢",
+      color: "#16A34A",
       message:
-        lang === "ja"
-          ? "利益率が低いため、投資内容を見直すことをおすすめします。"
-          : "The return is low compared to your investment. Consider reviewing this investment.",
+        text.positiveMessage,
     };
   }, [
-    roi,
+    hasInvestment,
     netProfit,
-    hasInput,
-    lang,
+    text,
   ]);
 
   return (
