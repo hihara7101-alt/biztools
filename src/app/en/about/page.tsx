@@ -193,6 +193,61 @@ export default function AboutPage() {
           color: "#111827",
         }}
       >
+        Our Content and Calculators
+      </h2>
+
+      <p style={{ marginTop: 20 }}>
+        BizTools creates calculation tools and explanatory content around
+        business calculations that are commonly used when reviewing profit,
+        pricing, break-even points, sales targets and investment returns.
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        Our calculators are designed so that users can understand not only
+        the result, but also the formulas and calculation methods behind
+        the numbers. Explanations and practical examples are included where
+        appropriate to make the calculations easier to understand.
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        Our business guides explain the meaning of important business
+        metrics and practical points to consider when using them. Guide
+        content is paired with related calculators so users can move from
+        understanding a concept to checking their own numbers.
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        We prioritize clarity and practical usefulness when creating
+        content and may review or update pages as the site develops.
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        The Japanese version of BizTools also includes a dedicated business
+        guide section with articles covering profit margins, break-even
+        points, pricing, ROI and sales targets.
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        <Link
+          href="/guides"
+          style={{
+            color: "#2563EB",
+            fontWeight: 700,
+            textDecoration: "none",
+          }}
+        >
+          View Business Guides →
+        </Link>
+      </p>
+
+      <h2
+        style={{
+          marginTop: 50,
+          fontSize: 30,
+          fontWeight: 700,
+          color: "#111827",
+        }}
+      >
         About the Results
       </h2>
 
