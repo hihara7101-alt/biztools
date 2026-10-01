@@ -183,6 +183,47 @@ export default function AboutPageJa() {
         <li>計算方法や具体例も確認可能</li>
       </ul>
 
+            <h2
+        style={{
+          marginTop: 50,
+          fontSize: 30,
+          fontWeight: 700,
+          color: "#111827",
+        }}
+      >
+        コンテンツと計算ツールについて
+      </h2>
+
+      <p style={{ marginTop: 20 }}>
+        BizToolsでは、ビジネスでよく使われる基本的な計算方法をもとに、
+        計算ツールと解説コンテンツを作成しています。
+        各計算ツールでは、使用している計算式や考え方をページ内で確認できるようにしています。
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        ビジネスガイドでは、計算結果だけでは分かりにくい数字の意味や、
+        実際の経営判断で確認したいポイントを、具体例を交えて解説しています。
+        ガイドの内容と関連する計算ツールを組み合わせて利用できるようにしています。
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        掲載内容は、分かりやすさと実用性を重視し、
+        必要に応じて内容の見直しや更新を行います。
+      </p>
+
+      <p style={{ marginTop: 20 }}>
+        <Link
+          href="/guides"
+          style={{
+            color: "#2563EB",
+            fontWeight: 700,
+            textDecoration: "none",
+          }}
+        >
+          ビジネスガイドを見る →
+        </Link>
+      </p>
+      
       <h2
         style={{
           marginTop: 50,
