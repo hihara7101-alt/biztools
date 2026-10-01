@@ -82,6 +82,18 @@ export default function Header() {
             {isEnglish ? "Calculators" : "計算ツール"}
           </Link>
 
+         {!isEnglish && (
+  <Link
+    href="/guides"
+    style={{
+      textDecoration: "none",
+      color: "#374151",
+    }}
+  >
+    ビジネスガイド
+  </Link>
+)} 
+
           <Link
             href={isEnglish ? "/en/about" : "/about"}
             style={{

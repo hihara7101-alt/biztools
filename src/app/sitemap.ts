@@ -15,6 +15,7 @@ const japanesePages = [
   "/pricing-calculator",
   "/sales-target-calculator",
   "/roi-calculator",
+  "/guides",
   "/guides/profit-margin",
   "/guides/break-even-point",
   "/guides/roi",
