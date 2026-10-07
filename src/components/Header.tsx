@@ -1,17 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const isEnglish =
     pathname === "/en" || pathname.startsWith("/en/");
-
-  const saveLanguage = (language: "ja" | "en") => {
-    document.cookie = `biztools-language=${language}; path=/; max-age=31536000; samesite=lax`;
-  };
 
   const japanesePath = isEnglish
     ? pathname.replace(/^\/en/, "") || "/"
@@ -22,6 +19,17 @@ export default function Header() {
     : pathname === "/"
       ? "/en"
       : `/en${pathname}`;
+
+  const switchLanguage = (
+    language: "ja" | "en",
+    destination: string
+  ) => {
+    document.cookie =
+      `biztools-language=${language}; path=/; max-age=31536000; samesite=lax`;
+
+    router.push(destination);
+    router.refresh();
+  };
 
   return (
     <header
@@ -82,17 +90,17 @@ export default function Header() {
             {isEnglish ? "Calculators" : "計算ツール"}
           </Link>
 
-         {!isEnglish && (
-  <Link
-    href="/guides"
-    style={{
-      textDecoration: "none",
-      color: "#374151",
-    }}
-  >
-    ビジネスガイド
-  </Link>
-)} 
+          {!isEnglish && (
+            <Link
+              href="/guides"
+              style={{
+                textDecoration: "none",
+                color: "#374151",
+              }}
+            >
+              ビジネスガイド
+            </Link>
+          )}
 
           <Link
             href={isEnglish ? "/en/about" : "/about"}
@@ -122,29 +130,37 @@ export default function Header() {
             }}
           />
 
-          <Link
-            href={englishPath}
-            onClick={() => saveLanguage("en")}
+          <button
+            type="button"
+            onClick={() => switchLanguage("en", englishPath)}
             style={{
-              textDecoration: "none",
+              border: "none",
+              background: "transparent",
+              padding: 0,
+              cursor: "pointer",
+              font: "inherit",
               fontWeight: isEnglish ? 700 : 500,
               color: isEnglish ? "#2563EB" : "#6B7280",
             }}
           >
             English
-          </Link>
+          </button>
 
-          <Link
-            href={japanesePath}
-            onClick={() => saveLanguage("ja")}
+          <button
+            type="button"
+            onClick={() => switchLanguage("ja", japanesePath)}
             style={{
-              textDecoration: "none",
+              border: "none",
+              background: "transparent",
+              padding: 0,
+              cursor: "pointer",
+              font: "inherit",
               fontWeight: isEnglish ? 500 : 700,
               color: isEnglish ? "#6B7280" : "#2563EB",
             }}
           >
             日本語
-          </Link>
+          </button>
         </nav>
       </div>
     </header>
