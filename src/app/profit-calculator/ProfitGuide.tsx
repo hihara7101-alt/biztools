@@ -1,3 +1,4 @@
+
 import ExampleTable from "@/components/ExampleTable";
 import FormulaBox from "@/components/FormulaBox";
 import FAQ from "@/components/FAQ";
@@ -37,35 +38,39 @@ export default function ProfitGuide({
               value: "¥200,000",
             },
             {
-              label: "粗利益",
+              label: "限界利益",
               value: "¥600,000",
             },
             {
-              label: "純利益",
+              label: "限界利益率",
+              value: "60%",
+            },
+            {
+              label: "概算利益",
               value: "¥400,000",
             },
             {
-              label: "純利益率",
+              label: "概算利益率",
               value: "40%",
             },
           ],
 
-          formulaTitle: "純利益の計算式",
+          formulaTitle: "概算利益の計算式",
 
           formula:
-            "純利益 = 売上 − 変動費 − 固定費",
+            "概算利益 = 売上高 − 変動費 − 固定費",
 
           formulaExplanation:
-            "売上から商品の仕入れや材料費などの変動費と、家賃や人件費などの固定費を差し引いた金額が純利益です。",
+            "売上高から変動費を差し引くと限界利益が求められます。さらに固定費を差し引くことで、入力した条件に基づく概算利益を計算できます。税金、金利、減価償却費など、入力していない費用は含まれないため、会計上の純利益とは異なる場合があります。",
 
           differenceTitle:
-            "粗利益と純利益の違い",
+            "限界利益と概算利益の違い",
 
           difference1:
-            "粗利益は、売上から商品やサービスを提供するために直接必要となる変動費を差し引いた金額です。商品そのものがどの程度利益を生み出しているかを確認する際に役立ちます。",
+            "限界利益は、売上高から変動費を差し引いた金額です。売上の増減に伴って変わる費用を除いた後、固定費の回収や利益の確保にどの程度貢献できるかを示します。",
 
           difference2:
-            "純利益は、粗利益からさらに固定費などを差し引いた最終的な利益です。事業全体として実際にどれだけ利益が残っているかを判断するために使います。",
+            "概算利益は、限界利益から入力した固定費を差し引いた金額です。事業の収益性を簡易的に確認できますが、会計上の営業利益や当期純利益をそのまま示すものではありません。",
 
           whyTitle: "利益を確認することが重要な理由",
 
@@ -86,7 +91,7 @@ export default function ProfitGuide({
             {
               title: "変動費を削減する",
               text:
-                "仕入価格、材料費、配送費などを見直すことで、販売1件あたりの利益を増やせます。",
+                "仕入価格、材料費、配送費などを見直すことで、販売1件あたりの限界利益を増やせます。",
             },
             {
               title: "固定費を見直す",
@@ -96,7 +101,7 @@ export default function ProfitGuide({
             {
               title: "利益率の高い商品を増やす",
               text:
-                "商品やサービスごとの利益率を比較し、収益性の高い商品に販売を集中させる方法もあります。",
+                "商品やサービスごとの限界利益率を比較し、収益性の高い商品に販売を集中させる方法もあります。",
             },
           ],
 
@@ -104,10 +109,22 @@ export default function ProfitGuide({
             "計算結果の見方",
 
           interpretation1:
-            "利益がプラスであれば、入力した売上と費用の条件では黒字です。ただし、利益額だけでなく売上に対する利益率も確認することで、事業の収益性を比較しやすくなります。",
+            "概算利益がプラスであれば、入力した売上高・変動費・固定費の条件では黒字です。ただし、入力していない費用がある場合は、実際の利益と異なります。利益額だけでなく概算利益率も確認すると、異なる期間や条件の収益性を比較しやすくなります。",
 
           interpretation2:
-            "利益がマイナスの場合は、販売価格、販売数量、変動費、固定費のいずれかを見直す必要があります。損益分岐点計算ツールを併用すると、黒字化に必要な売上の目安も確認できます。",
+            "概算利益がマイナスの場合は、売上高、販売価格、販売数量、変動費、固定費を見直すことが考えられます。損益分岐点計算ツールを併用すると、黒字化に必要な売上高の目安も確認できます。",
+
+          comparisonTitle:
+            "シナリオ比較の使い方",
+
+          comparison1:
+            "「別の条件と比較する」を開くと、現在の事業数値と比較案を並べて確認できます。「現在の数値をコピー」を使えば、売上高・変動費・固定費を引き継いだうえで、変更したい項目だけを調整できます。",
+
+          comparison2:
+            "例えば、現在の売上高が100万円、変動費が40万円、固定費が20万円の場合、概算利益は40万円です。比較案として売上高120万円、変動費45万円、固定費22万円を入力すると、概算利益は53万円となり、現在より13万円増加します。",
+
+          comparison3:
+            "この比較は入力条件に基づく試算です。実際には販売数量の変化、追加費用、税金なども考慮する必要があります。比較するときは同じ期間と同じ費用区分を使用してください。",
 
           faq: [
             {
@@ -116,19 +133,19 @@ export default function ProfitGuide({
                 "利益とは、売上から事業に必要な費用を差し引いた後に残る金額です。",
             },
             {
-              question: "粗利益とは何ですか？",
+              question: "限界利益とは何ですか？",
               answer:
-                "粗利益は、売上から商品の原価やサービス提供に直接かかる変動費を差し引いた利益です。",
+                "限界利益は、売上高から変動費を差し引いた金額です。固定費の回収と利益の確保にどの程度貢献するかを示します。",
             },
             {
-              question: "純利益とは何ですか？",
+              question: "概算利益とは何ですか？",
               answer:
-                "純利益は、売上から変動費と固定費などの事業費用を差し引いた後に残る最終的な利益です。",
+                "このツールでは、売上高から入力した変動費と固定費を差し引いた金額を概算利益としています。会計上の純利益とは異なる場合があります。",
             },
             {
               question: "利益率とは何ですか？",
               answer:
-                "利益率は、売上に対してどの程度の利益が残っているかを割合で表した指標です。",
+                "利益率は、売上高に対してどの程度の利益が残っているかを割合で表した指標です。このツールでは限界利益率と概算利益率を確認できます。",
             },
             {
               question: "理想的な利益率はどのくらいですか？",
@@ -144,6 +161,11 @@ export default function ProfitGuide({
               question: "どのくらいの頻度で利益を確認すべきですか？",
               answer:
                 "月次で確認する方法が一般的ですが、売上や費用の変動が大きい事業では週次など、より短い期間で確認することも有効です。",
+            },
+            {
+              question: "シナリオ比較では何を確認できますか？",
+              answer:
+                "売上高・変動費・固定費を変更した場合の概算利益と概算利益率を比較できます。価格変更やコスト削減の検討に役立ちます。",
             },
           ],
 
@@ -187,35 +209,39 @@ export default function ProfitGuide({
               value: "$2,000",
             },
             {
-              label: "Gross Profit",
+              label: "Contribution Margin",
               value: "$6,000",
             },
             {
-              label: "Net Profit",
+              label: "Contribution Margin Ratio",
+              value: "60%",
+            },
+            {
+              label: "Estimated Profit",
               value: "$4,000",
             },
             {
-              label: "Net Profit Margin",
+              label: "Estimated Profit Margin",
               value: "40%",
             },
           ],
 
-          formulaTitle: "Net Profit Formula",
+          formulaTitle: "Estimated Profit Formula",
 
           formula:
-            "Net Profit = Revenue − Variable Costs − Fixed Costs",
+            "Estimated Profit = Revenue − Variable Costs − Fixed Costs",
 
           formulaExplanation:
-            "Subtract variable costs such as materials or product costs and fixed costs such as rent or subscriptions from revenue. The amount remaining is net profit.",
+            "Subtract variable costs from revenue to calculate contribution margin. Then subtract the fixed costs entered to calculate estimated profit. Because other expenses, taxes, interest or depreciation may not be included, this result should not be treated as accounting net income.",
 
           differenceTitle:
-            "Gross Profit vs. Net Profit",
+            "Contribution Margin vs. Estimated Profit",
 
           difference1:
-            "Gross profit is revenue minus the direct or variable costs associated with providing a product or service. It helps show how profitable the product or service itself is before fixed operating costs.",
+            "Contribution margin is revenue minus variable costs. It indicates how much remains to cover fixed costs and contribute to profit.",
 
           difference2:
-            "Net profit goes further by subtracting fixed and operating costs as well. It provides a broader view of how much profit the entire business actually retains.",
+            "Estimated profit subtracts the entered fixed costs from contribution margin. It provides a simplified view of profitability, but it is not necessarily the same as operating income or net income reported in financial statements.",
 
           whyTitle: "Why Profit Matters",
 
@@ -246,7 +272,7 @@ export default function ProfitGuide({
             {
               title: "Focus on Higher-Margin Sales",
               text:
-                "Compare products or services and consider prioritizing those that generate stronger margins.",
+                "Compare contribution margins across products or services and consider prioritizing sales with stronger margins.",
             },
           ],
 
@@ -254,10 +280,22 @@ export default function ProfitGuide({
             "How to Interpret Your Results",
 
           interpretation1:
-            "A positive net profit means the business is profitable under the revenue and cost assumptions you entered. Reviewing the profit margin as well as the dollar amount makes it easier to compare performance across different periods or products.",
+            "A positive estimated profit means revenue exceeds the variable and fixed costs entered. However, omitted expenses may change the actual result. Reviewing estimated profit margin as well as the amount helps compare performance across different periods or scenarios.",
 
           interpretation2:
-            "A negative result means costs exceed revenue. In that case, review pricing, sales volume, variable costs or fixed costs. The Break-even Calculator can also help estimate how much must be sold before the business becomes profitable.",
+            "A negative result means the entered costs exceed revenue. Review pricing, sales volume, variable costs or fixed costs. The Break-even Calculator can help estimate the revenue needed to cover costs.",
+
+          comparisonTitle:
+            "How to Use Scenario Comparison",
+
+          comparison1:
+            "Select Compare Another Scenario to compare your current figures with an alternative. Use Copy Current Figures to carry over your revenue, variable costs and fixed costs, then adjust only the assumptions you want to test.",
+
+          comparison2:
+            "For example, current revenue of $10,000, variable costs of $4,000 and fixed costs of $2,000 produce estimated profit of $4,000. If alternative revenue is $12,000, variable costs are $4,500 and fixed costs are $2,200, estimated profit becomes $5,300, an increase of $1,300.",
+
+          comparison3:
+            "These results are estimates based on the figures entered. Actual outcomes may differ due to changes in sales volume, additional expenses or taxes. Use consistent time periods and cost categories when comparing scenarios.",
 
           faq: [
             {
@@ -266,19 +304,19 @@ export default function ProfitGuide({
                 "Profit is the money remaining after business expenses have been deducted from revenue.",
             },
             {
-              question: "What is gross profit?",
+              question: "What is contribution margin?",
               answer:
-                "Gross profit is revenue minus the direct or variable costs required to produce or deliver products or services.",
+                "Contribution margin is revenue minus variable costs. It represents the amount available to cover fixed costs and contribute to profit.",
             },
             {
-              question: "What is net profit?",
+              question: "What is estimated profit?",
               answer:
-                "Net profit is the amount remaining after variable costs, fixed costs and other operating expenses are deducted from revenue.",
+                "This calculator defines estimated profit as revenue minus the variable and fixed costs entered. It may differ from accounting net income.",
             },
             {
               question: "What is profit margin?",
               answer:
-                "Profit margin expresses profit as a percentage of revenue, making it easier to compare profitability.",
+                "Profit margin expresses profit as a percentage of revenue. This calculator displays both contribution margin ratio and estimated profit margin.",
             },
             {
               question: "What is a good profit margin?",
@@ -294,6 +332,11 @@ export default function ProfitGuide({
               question: "How often should I calculate profit?",
               answer:
                 "Monthly reviews are common, but businesses with frequent changes in sales or costs may benefit from weekly or more frequent reviews.",
+            },
+            {
+              question: "What does scenario comparison show?",
+              answer:
+                "It compares estimated profit and estimated profit margin between current and alternative revenue and cost assumptions.",
             },
           ],
 
@@ -535,6 +578,55 @@ export default function ProfitGuide({
           }}
         >
           {text.interpretation2}
+        </p>
+      </section>
+
+      <section
+        style={{
+          marginTop: "60px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "30px",
+            fontWeight: 700,
+            color: "#111827",
+          }}
+        >
+          {text.comparisonTitle}
+        </h2>
+
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+            fontSize: "17px",
+          }}
+        >
+          {text.comparison1}
+        </p>
+
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+            fontSize: "17px",
+          }}
+        >
+          {text.comparison2}
+        </p>
+
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#6B7280",
+            lineHeight: 1.9,
+            fontSize: "17px",
+          }}
+        >
+          {text.comparison3}
         </p>
       </section>
 
