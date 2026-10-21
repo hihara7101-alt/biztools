@@ -147,18 +147,19 @@ function ResultBox({
       </div>
 
       <div
-        style={{
-          marginTop: "12px",
-          color: "#111827",
-          fontSize: "clamp(21px, 3vw, 29px)",
-          fontWeight: 900,
-          whiteSpace: "nowrap",
-          overflowX: "auto",
-          fontVariantNumeric: "tabular-nums",
-        }}
-      >
-        {children}
-      </div>
+  style={{
+    marginTop: "12px",
+    color: "#111827",
+    fontSize: "clamp(18px, 2.5vw, 26px)",
+    fontWeight: 900,
+    whiteSpace: "normal",
+    overflowWrap: "anywhere",
+    lineHeight: 1.4,
+    fontVariantNumeric: "tabular-nums",
+  }}
+>
+  {children}
+</div>
 
       {description && (
         <p
