@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import PricingCalculator from "../../pricing-calculator/PricingCalculator";
-import PricingGuide from "../../pricing-calculator/PricingGuide";
+import PricingCalculator from "@/app/(ja)/pricing-calculator/PricingCalculator";
+import PricingGuide from "@/app/(ja)/pricing-calculator/PricingGuide";
 
 export const metadata: Metadata = {
   title: "Pricing Calculator | BizTools",

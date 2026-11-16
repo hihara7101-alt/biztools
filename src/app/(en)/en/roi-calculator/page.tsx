@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import ROICalculator from "../../roi-calculator/ROICalculator";
-import ROIGuide from "../../roi-calculator/ROIGuide";
+import ROICalculator from "@/app/(ja)/roi-calculator/ROICalculator";
+import ROIGuide from "@/app/(ja)/roi-calculator/ROIGuide";
 
 export const metadata: Metadata = {
   title: "ROI Calculator | BizTools",

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import BreakEvenCalculator from "../../break-even-calculator/BreakEvenCalculator";
+import BreakEvenCalculator from "@/app/(ja)/break-even-calculator/BreakEvenCalculator";
 
 export const metadata: Metadata = {
   title: "Break-even Calculator | BizTools",
