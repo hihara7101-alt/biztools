@@ -7,7 +7,7 @@ import FeatureCard from "@/components/FeatureCard";
 import UserCard from "@/components/UserCard";
 
 export const metadata: Metadata = {
-  title: "BizTools | Free Business Calculators",
+  title: "Free Business Calculators",
 
   description:
     "Free business calculators for profit, break-even point, pricing, ROI and sales targets. Built for entrepreneurs, freelancers, small businesses and online sellers.",
