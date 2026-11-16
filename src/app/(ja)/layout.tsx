@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://uttacca.com"),
 
   title: {
-    default: "Uttacca | Free Business Calculators",
-    template: "%s | Uttacca",
-  },
+  default: "BizTools | Free Business Calculators",
+  template: "%s | BizTools",
+},
 
   description:
     "Free business calculators for entrepreneurs, freelancers and small business owners. Calculate profit, break-even, pricing, ROI and sales targets instantly.",
@@ -30,22 +30,22 @@ export const metadata: Metadata = {
   ],
 
   authors: [
-    {
-      name: "Uttacca",
-    },
-  ],
+  {
+    name: "BizTools",
+  },
+],
 
-  creator: "Uttacca",
+creator: "BizTools",
 
   openGraph: {
-    title: "Uttacca | Free Business Calculators",
+    title: "BizTools | Free Business Calculators",
 
     description:
       "Free business calculators for entrepreneurs, freelancers and small business owners.",
 
     url: "https://uttacca.com",
 
-    siteName: "Uttacca",
+    siteName: "BizTools",
 
     locale: "ja_JP",
 
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Uttacca | Free Business Calculators",
+    title: "BizTools | Free Business Calculators",
 
     description:
       "Free business calculators for entrepreneurs, freelancers and small business owners.",

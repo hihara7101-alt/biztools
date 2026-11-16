@@ -7,7 +7,7 @@ type SEOProps = {
   lang?: "en" | "ja";
 };
 
-const SITE_URL = "https://www.uttacca.com";
+const SITE_URL = "https://uttacca.com";
 
 export function createMetadata({
   title,

@@ -4,7 +4,7 @@ import ProfitCalculator from "@/app/(ja)/profit-calculator/ProfitCalculator";
 import ProfitGuide from "@/app/(ja)/profit-calculator/ProfitGuide";
 
 export const metadata: Metadata = {
-  title: "Profit Calculator | BizTools",
+  title: "Profit Calculator",
 
   description:
     "Free Profit Calculator for entrepreneurs and small businesses. Calculate profit, gross margin, net margin, contribution margin and profitability instantly.",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.uttacca.com/en/profit-calculator",
+    canonical: "https://uttacca.com/en/profit-calculator",
 
     languages: {
-      "en-US": "https://www.uttacca.com/en/profit-calculator",
-      "ja-JP": "https://www.uttacca.com/profit-calculator",
-      "x-default": "https://www.uttacca.com/profit-calculator",
-    },
+  "en-US": "https://uttacca.com/en/profit-calculator",
+  "ja-JP": "https://uttacca.com/profit-calculator",
+  "x-default": "https://uttacca.com/profit-calculator",
+},
   },
 
   openGraph: {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description:
       "Calculate profit, gross margin, net margin and contribution margin instantly.",
 
-    url: "https://www.uttacca.com/en/profit-calculator",
+    url: "https://uttacca.com/en/profit-calculator",
 
     siteName: "BizTools",
 
