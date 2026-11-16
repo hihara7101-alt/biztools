@@ -4,7 +4,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
 
-    name: "Uttacca",
+    name: "BizTools",
 
     url: "https://uttacca.com",
 
