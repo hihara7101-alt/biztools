@@ -48,9 +48,9 @@ export default function Hero({
 
           secondaryButton: "Try Profit Calculator",
 
-          primaryHref: "/calculators",
+          primaryHref: "/en/calculators",
 
-          secondaryHref: "/profit-calculator",
+          secondaryHref: "/en/profit-calculator",
 
           features: [
             "✓ Free Forever",
