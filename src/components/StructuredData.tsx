@@ -1,13 +1,12 @@
+
 export default function StructuredData() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
 
-    name: "BizTools",
+    name: "Uttacca",
 
-    url: "https://biztools.com",
-
-    logo: "https://biztools.com/logo.png",
+    url: "https://uttacca.com",
 
     description:
       "Free business calculators for entrepreneurs, freelancers and small businesses.",
