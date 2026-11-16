@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import SalesTargetCalculator from "../../sales-target-calculator/SalesTargetCalculator";
-import SalesTargetGuide from "../../sales-target-calculator/SalesTargetGuide";
+import SalesTargetCalculator from "@/app/(ja)/sales-target-calculator/SalesTargetCalculator";
+import SalesTargetGuide from "@/app/(ja)/sales-target-calculator/SalesTargetGuide";
 
 export const metadata: Metadata = {
   title: "Sales Target Calculator | BizTools",

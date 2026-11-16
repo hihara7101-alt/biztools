@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import ProfitCalculator from "../../profit-calculator/ProfitCalculator";
-import ProfitGuide from "../../profit-calculator/ProfitGuide";
+import ProfitCalculator from "@/app/(ja)/profit-calculator/ProfitCalculator";
+import ProfitGuide from "@/app/(ja)/profit-calculator/ProfitGuide";
 
 export const metadata: Metadata = {
   title: "Profit Calculator | BizTools",
